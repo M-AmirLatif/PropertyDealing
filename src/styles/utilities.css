@@ -1,0 +1,199 @@
+/* ==========================================================================
+   PLOT INDEX UTILITIES & STRUCTURAL HELPERS
+   ========================================================================== */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Sections */
+.section {
+  padding-block: var(--section-pad);
+  position: relative;
+}
+
+.section--inset {
+  padding-block: clamp(40px, 6vw, 80px);
+}
+
+.section--dark,
+.surface-dark {
+  background-color: var(--surface-dark);
+  color: var(--text-on-dark);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.surface-dark h1,
+.surface-dark h2,
+.surface-dark h3 {
+  color: var(--text-on-dark);
+}
+
+.section--ivory-200,
+.surface-ivory-200 {
+  background-color: var(--surface-alt);
+}
+
+/* Hairline dividers & borders */
+.hairline-top {
+  border-block-start: var(--border-hairline) solid var(--border);
+}
+
+.hairline-bottom {
+  border-block-end: var(--border-hairline) solid var(--border);
+}
+
+.hairline-border {
+  border: var(--border-hairline) solid var(--border);
+}
+
+.hairline-on-dark {
+  border-color: var(--border-on-dark);
+}
+
+/* Visually Hidden for screen readers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Typography Helpers */
+.text-accent {
+  color: var(--text-accent);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-on-dark {
+  color: var(--text-on-dark);
+}
+
+.text-muted-on-dark {
+  color: var(--text-muted-on-dark);
+}
+
+/* Flexbox Layout Helpers */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-5 { gap: var(--space-5); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* Shimmer pulse for SurveyImage skeletons */
+@keyframes shimmerPulse {
+  0% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.55; }
+}
+
+.survey-image-skeleton {
+  animation: shimmerPulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .survey-image-skeleton {
+    animation: none !important;
+    opacity: 0.75;
+  }
+}
+
+/* Demo Admin Listings Responsive Views */
+.admin-listings-desktop-wrapper {
+  display: block;
+}
+.admin-listings-mobile-cards {
+  display: none !important;
+}
+
+@media (max-width: 860px) {
+  .admin-listings-desktop-wrapper {
+    display: none !important;
+  }
+  .admin-listings-mobile-cards {
+    display: flex !important;
+  }
+}
+
+/* Card Hover & Frame Tightening (ONLY under hover: hover and pointer: fine) */
+@media (hover: hover) and (pointer: fine) {
+  .property-card {
+    transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+  }
+  .property-card:hover {
+    border-color: var(--border-strong) !important;
+    box-shadow: 0 12px 28px -10px rgba(24, 26, 23, 0.12) !important;
+  }
+  .property-card:hover:not(.property-card--rented) .property-card-img-zoom {
+    transform: scale(1.03) !important;
+  }
+  .property-card:hover .survey-frame-bracket-tl {
+    transform: translate(4px, 4px) !important;
+  }
+  .property-card:hover .survey-frame-bracket-tr {
+    transform: translate(-4px, 4px) !important;
+  }
+  .property-card:hover .survey-frame-bracket-bl {
+    transform: translate(4px, -4px) !important;
+  }
+  .property-card:hover .survey-frame-bracket-br {
+    transform: translate(-4px, -4px) !important;
+  }
+}
+
+/* Button Pressed State (Scale 0.98 / 100ms) */
+.btn-pressable:active {
+  transform: scale(0.98);
+  transition: transform 100ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .property-card-img-zoom,
+  .survey-frame-bracket-tl,
+  .survey-frame-bracket-tr,
+  .survey-frame-bracket-bl,
+  .survey-frame-bracket-br,
+  .btn-pressable:active {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+

@@ -1,0 +1,174 @@
+/* ==========================================================================
+   PLOT INDEX DESIGN TOKENS
+   Contemporary Real-Estate Editorial Design System for Lahore Property Dealers
+   ========================================================================== */
+
+/*
+ * BREAKPOINTS (Mobile-first min-width):
+ *   --bp-sm:   480px  (Large phones / phablets)
+ *   --bp-md:   768px  (Tablets)
+ *   --bp-lg:   1024px (Desktops / Laptops)
+ *   --bp-xl:   1280px (Standard Wide Desktops)
+ *   --bp-2xl:  1536px (Ultra-wide Displays)
+ *
+ * NOTE: CSS custom properties cannot be used directly inside @media queries.
+ * Use standard media queries matching these thresholds:
+ *   @media (min-width: 480px)  { ... }
+ *   @media (min-width: 768px)  { ... }
+ *   @media (min-width: 1024px) { ... }
+ *   @media (min-width: 1280px) { ... }
+ *   @media (min-width: 1536px) { ... }
+ */
+
+/*
+ * URDU / ARABIC SUPPORT NOTE:
+ * When adding multilingual support (e.g. <html lang="ur" dir="rtl">),
+ * self-host and import Google Fonts "Noto Nastaliq Urdu" and "Noto Naskh Arabic"
+ * and prepend them to the font stacks below. The layout uses logical CSS
+ * properties (margin-inline, padding-block, inset-inline) to seamlessly support RTL.
+ */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. RAW COLOR PALETTE
+     ------------------------------------------------------------------------ */
+  --ivory-50: #FBF8F2;
+  --ivory-100: #F4EFE6; /* Primary page background */
+  --ivory-200: #EAE3D5;
+  --line: #D9D0BE;
+  --line-strong: #BFB49C;
+
+  --charcoal-900: #181A17;
+  --charcoal-700: #2B2E29;
+  --charcoal-500: #5B5F57; /* Muted text */
+
+  --forest-900: #1F2A22; /* Primary dark brand surface */
+  --forest-700: #2F3F33;
+  --olive-500: #6E7A58;
+  --olive-200: #C9D0B5;
+
+  /* DECORATION ONLY: corner frame marks, survey rules, numerals on dark (NEVER body text) */
+  --brass-500: #B08A4E;
+
+  /* Accent links & badges */
+  --copper-600: #9A4F2A;
+
+  /* WhatsApp action colors (ONLY used for WhatsApp CTAs) */
+  --whatsapp: #0F7A3F;
+  --whatsapp-hover: #0B6633;
+
+  /* Feedback colors */
+  --danger: #A3321F;
+  --warning: #8A6A1F;
+  --success: #2F6B3F;
+
+  /* ------------------------------------------------------------------------
+     2. SEMANTIC COLOR ALIASES (Use ONLY these inside components)
+     ------------------------------------------------------------------------
+     WCAG AA Contrast Verification Summary:
+       - Body text (--charcoal-700 #2B2E29) on --bg (#F4EFE6): 11.9:1 (Passes AAA, req 4.5:1)
+       - Heading text (--charcoal-900 #181A17) on --bg (#F4EFE6): 14.7:1 (Passes AAA, req 4.5:1)
+       - Muted text (--charcoal-500 #5B5F57) on --bg (#F4EFE6): 5.6:1 (Passes AA, req 4.5:1)
+       - Accent link (--copper-600 #9A4F2A) on --bg (#F4EFE6): 5.2:1 (Passes AA, req 4.5:1)
+       - Dark surface text (--text-on-dark #FBF8F2) on --surface-dark (#1F2A22): 13.6:1 (Passes AAA)
+       - Dark surface muted (--text-muted-on-dark #C9D0B5) on --surface-dark (#1F2A22): 9.0:1 (Passes AAA)
+       - White text on --whatsapp (#0F7A3F): 5.6:1 (Passes AA)
+       - Brass decoration (--brass-500 #B08A4E) on --surface-dark (#1F2A22): 4.3:1 (Passes 3:1 graphical)
+     ------------------------------------------------------------------------ */
+  --bg: var(--ivory-100);
+  --bg-subtle: var(--ivory-50);
+  --surface: var(--ivory-50);
+  --surface-alt: var(--ivory-200);
+  --surface-dark: var(--forest-900);
+  --surface-dark-subtle: var(--forest-700);
+
+  --text: var(--charcoal-900);
+  --text-heading: var(--charcoal-900);
+  --text-body: var(--charcoal-700);
+  --text-muted: var(--charcoal-500);
+  --text-accent: var(--copper-600);
+  --text-brass: #7A571A; /* WCAG AA 5.2:1 contrast on ivory */
+  --text-brass-on-dark: #D4B06A; /* WCAG AA 7.5:1 contrast on forest-900 */
+  --text-on-dark: var(--ivory-50);
+  --text-muted-on-dark: var(--olive-200);
+
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+  --border-on-dark: rgba(217, 208, 190, 0.2);
+
+  --accent: var(--copper-600);
+  --accent-decoration: var(--brass-500);
+  --brand-forest: var(--forest-900);
+  --brand-olive: var(--olive-500);
+
+  --focus-ring: var(--forest-700);
+  --focus-ring-on-dark: var(--ivory-50);
+
+  /* Safe Area Insets for modern mobile displays */
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sat: env(safe-area-inset-top, 0px);
+
+  /* ------------------------------------------------------------------------
+     3. TYPOGRAPHY
+     ------------------------------------------------------------------------ */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif, 'Noto Nastaliq Urdu', 'Noto Naskh Arabic';
+  --font-body: 'Hanken Grotesk Variable', 'Hanken Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 'Noto Nastaliq Urdu', 'Noto Naskh Arabic';
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace, 'Noto Nastaliq Urdu', 'Noto Naskh Arabic';
+
+  /* Fluid type scale using clamp() */
+  --fs-display: clamp(3rem, 6vw + 1rem, 7rem);
+  --fs-h1: clamp(2.4rem, 4vw + 0.5rem, 4.5rem);
+  --fs-h2: clamp(1.9rem, 2.5vw + 0.5rem, 3rem);
+  --fs-h3: 1.5rem;
+  --fs-body: 1.0625rem; /* Never below 16px */
+  --fs-small: 0.875rem;
+  --fs-label: 0.72rem;
+
+  --lh-display: 1.02;
+  --lh-h1: 1.08;
+  --lh-h2: 1.15;
+  --lh-h3: 1.25;
+  --lh-body: 1.6;
+
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.02em;
+  --tracking-mono: 0.12em;
+
+  /* ------------------------------------------------------------------------
+     4. SPACING & LAYOUT
+     ------------------------------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --section-pad: clamp(64px, 10vw, 144px);
+  --container-max: 1320px;
+  --gutter: clamp(16px, 4vw, 48px);
+
+  /* ------------------------------------------------------------------------
+     5. SHAPE, BORDERS & SHADOWS
+     ------------------------------------------------------------------------ */
+  --radius-default: 2px;
+  --radius-pill: 9999px;
+  --border-hairline: 1px;
+
+  /* Minimal soft elevation for dialogs and sticky header */
+  --shadow-overlay: 0 16px 40px -12px rgba(24, 26, 23, 0.18);
+  --shadow-dropdown: 0 10px 25px -5px rgba(24, 26, 23, 0.12);
+
+  /* ------------------------------------------------------------------------
+     6. MOTION TOKENS
+     ------------------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 500ms;
+  --duration-crawl: 800ms;
+}

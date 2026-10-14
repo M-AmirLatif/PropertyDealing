@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <!-- Dark Forest Ground -->
+  <rect width="32" height="32" rx="6" fill="#181a17"/>
+  
+  <!-- Architectural Survey Arch Outline -->
+  <path d="M 8 25 V 14 A 8 8 0 0 1 24 14 V 25" stroke="#eed9a8" stroke-width="2" stroke-linecap="round" fill="none"/>
+  
+  <!-- Keystones / Survey Ticks -->
+  <path d="M 16 6 V 9" stroke="#9a4f2a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 6 25 H 26" stroke="#eed9a8" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Subtle Internal Survey Node -->
+  <circle cx="16" cy="17" r="1.5" fill="#eed9a8"/>
+</svg>
