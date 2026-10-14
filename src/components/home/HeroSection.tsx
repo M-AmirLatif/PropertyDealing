@@ -128,7 +128,7 @@ export function HeroSection() {
                 size="lg"
                 onClick={() => openWhatsApp(hero.whatsappMessage)}
               >
-                <MessageSquare size={16} style={{ marginRight: '8px' }} />
+                <MessageSquare size={16} />
                 {hero.whatsappCta}
               </Button>
             </motion.div>
@@ -190,16 +190,16 @@ export function HeroSection() {
             marginTop: 'var(--space-4)',
           }}
         >
-          <Button to="/properties" variant="primary" size="lg" withArrow style={{ width: '100%' }}>
+          <Button to="/properties" variant="primary" size="lg" withArrow style={{ width: '100%', minHeight: '54px' }}>
             {hero.primaryCta}
           </Button>
           <Button
             variant="whatsapp"
             size="lg"
             onClick={() => openWhatsApp(hero.whatsappMessage)}
-            style={{ width: '100%' }}
+            style={{ width: '100%', minHeight: '54px' }}
           >
-            <MessageSquare size={16} style={{ marginRight: '8px' }} />
+            <MessageSquare size={16} />
             {hero.whatsappCta}
           </Button>
         </div>

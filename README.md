@@ -84,12 +84,14 @@ All routes run via client-side hash routing:
 ## Customizing Dealer & Property Data
 
 ### 1. Business Credentials & Contact
-Edit **[`src/config/site.ts`](file:///d:/PropertyDealing/src/config/site.ts)**:
-- `dealerName`: Replace `"[Dealer Name]"` with the client's registered trade name.
-- `phoneDisplay` & `phoneE164`: Primary telephone number.
-- `whatsappNumber`: Numeric string (e.g., `"923001234567"`). When set to `""`, the site automatically switches into demo simulation dialog mode.
-- `address`: Physical office address in Lahore (e.g., Phase 5 DHA, Gulberg III).
-- `officeHours`: Weekly business operating hours.
+Configured in **[`src/config/site.ts`](file:///d:/PropertyDealing/src/config/site.ts)**:
+- `dealerName`: `"Irfan Umri"`
+- `brandShort`: `"Irfan Umri"`
+- `phoneDisplay`: `"+92 301 6803398"`
+- `phoneE164`: `"+923016803398"`
+- `whatsappNumber`: `"923016803398"`
+- `address`: Physical office address placeholder.
+- `officeHours`: Weekly operating hours placeholder.
 
 ### 2. Property Dataset & Photography
 - **Property Records**: Add or edit records in **[`src/data/properties.ts`](file:///d:/PropertyDealing/src/data/properties.ts)**.

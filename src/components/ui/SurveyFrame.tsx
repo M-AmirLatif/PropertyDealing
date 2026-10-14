@@ -159,26 +159,22 @@ export function SurveyFrame({
       {/* Monospaced Survey Caption Slot */}
       {caption && (
         <div
+          className="survey-frame-caption"
           style={{
             marginTop: 'var(--space-2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            display: 'block',
             fontFamily: 'var(--font-mono)',
             fontSize: 'var(--fs-label)',
             letterSpacing: 'var(--tracking-mono)',
             textTransform: 'uppercase',
             color: 'var(--text-muted)',
-            lineHeight: 1.3,
+            lineHeight: 1.35,
             paddingInline: '2px',
+            whiteSpace: 'normal',
+            wordBreak: 'break-word',
           }}
         >
-          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-            {caption}
-          </span>
-          <span style={{ color: 'var(--brass-500)', fontSize: '0.625rem', flexShrink: 0, paddingLeft: '8px' }}>
-            ▲ SURVEY REGISTER
-          </span>
+          <span>{caption}</span>
         </div>
       )}
     </div>

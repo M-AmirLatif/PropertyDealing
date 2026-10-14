@@ -10,6 +10,7 @@ export function Footer() {
 
   return (
     <footer
+      className="site-footer"
       style={{
         backgroundColor: 'var(--forest-900)',
         color: 'var(--text-on-dark)',
@@ -45,8 +46,8 @@ export function Footer() {
               }}
             >
               Architectural survey register and rental property advisory in Lahore,
-              Pakistan. Connecting clients with premier rental portions, family residences,
-              and commercial spaces across DHA, Gulberg, and prime localities.
+              Pakistan. Assisting with rental portions, family residences,
+              and commercial spaces across DHA, Gulberg, and established localities.
             </p>
           </div>
 
@@ -110,7 +111,7 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/properties" style={{ color: 'var(--olive-200)', fontSize: 'var(--fs-small)' }}>
-                  Lahore Prime Locations
+                  Lahore Localities
                 </Link>
               </li>
               <li>
@@ -228,14 +229,19 @@ export function Footer() {
           <div>
             &copy; {currentYear} {SITE.dealerName} · {SITE.city}, {SITE.country}
           </div>
-          <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
+          <div>
             <span>Plot Index Design System</span>
-            <Link to="/styleguide" style={{ color: 'var(--text-brass-on-dark)', textDecoration: 'underline' }}>
-              Style Guide
-            </Link>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1023px) {
+          .site-footer {
+            padding-bottom: calc(clamp(2.5rem, 4vw, 4rem) + 68px + env(safe-area-inset-bottom, 0px)) !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

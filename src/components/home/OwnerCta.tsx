@@ -46,7 +46,7 @@ export function OwnerCta() {
               transition={{ duration: 0.4 }}
             >
               <SurveyFrame
-                caption="SURVEY REGISTER · OWNER INVENTORY · LAHORE"
+                caption="OWNER INVENTORY REGISTER · LAHORE"
                 aspectRatio="16/11"
                 markColor="muted"
               >
@@ -123,6 +123,7 @@ export function OwnerCta() {
               </p>
 
               <div
+                className="owner-cta-buttons"
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -138,7 +139,7 @@ export function OwnerCta() {
                   size="lg"
                   onClick={() => openWhatsApp(ownerCta.whatsappMessage)}
                 >
-                  <MessageSquare size={16} style={{ marginRight: '8px' }} />
+                  <MessageSquare size={16} />
                   {ownerCta.secondaryButton}
                 </Button>
               </div>
@@ -157,6 +158,17 @@ export function OwnerCta() {
           .owner-cta-image-col,
           .owner-cta-text-col {
             width: 100% !important;
+          }
+        }
+        @media (max-width: 767px) {
+          .owner-cta-buttons {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .owner-cta-buttons > * {
+            width: 100% !important;
+            min-height: 54px !important;
           }
         }
       `}</style>

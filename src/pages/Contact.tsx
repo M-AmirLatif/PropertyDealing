@@ -233,7 +233,7 @@ export default function Contact() {
                 {/* WhatsApp Action Row */}
                 <button
                   type="button"
-                  onClick={() => openWhatsApp('Assalam-o-Alaikum, I would like to consult with the property dealer regarding Lahore rentals.')}
+                  onClick={() => openWhatsApp('Hello Irfan, I would like to consult regarding rental properties in Lahore.')}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -313,7 +313,7 @@ export default function Contact() {
                         Telephone Advisory
                       </strong>
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-                        {phoneDisplay} (Placeholder)
+                        {phoneDisplay}
                       </span>
                     </div>
                   </div>

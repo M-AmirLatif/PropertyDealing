@@ -184,6 +184,25 @@
   transition: transform 100ms ease;
 }
 
+/* Shared Button Layout Rules */
+.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap;
+}
+
+.btn > svg,
+.btn svg {
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 339px) {
+  .btn {
+    white-space: normal;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .property-card-img-zoom,
   .survey-frame-bracket-tl,

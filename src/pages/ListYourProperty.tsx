@@ -521,7 +521,7 @@ export default function ListYourProperty() {
                     3.
                   </span>
                   <p style={{ fontSize: '0.8125rem', color: 'var(--text-body)', margin: 0, lineHeight: 1.5 }}>
-                    <strong>Vetted viewings:</strong> Accompanied inspections are scheduled only for qualified, serious prospective tenants.
+                    <strong>Accompanied viewings:</strong> Property visits are arranged only for qualified, serious prospective tenants.
                   </p>
                 </div>
               </div>

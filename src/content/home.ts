@@ -27,7 +27,7 @@ export const HOME_CONTENT = {
     primaryCta: 'Explore properties',
     whatsappCta: 'Message on WhatsApp',
     whatsappMessage:
-      'Assalam-o-Alaikum, I am exploring rental properties in Lahore and would like assistance with finding a place.',
+      'Hello Irfan, I am exploring rental properties in Lahore and would like assistance with finding a place.',
     surveyCaption: 'ILLUSTRATIVE IMAGE · LAHORE',
   },
 
@@ -120,17 +120,17 @@ export const HOME_CONTENT = {
     label: '06 · PROPERTY OWNERS',
     title: 'Have a property to rent out?',
     description:
-      'We assist landlords across DHA, Gulberg, Bahria Town, and Johar Town in presenting their properties clearly to vetted tenants.',
+      'We help owners present their properties clearly and handle enquiries across DHA, Gulberg, Bahria Town, and Johar Town.',
     primaryButton: 'List Your Property',
     secondaryButton: 'Discuss on WhatsApp',
     whatsappMessage:
-      'Assalam-o-Alaikum, I own a property in Lahore that I am interested in putting up for rent. Please let me know how to proceed.',
+      'Hello Irfan, I own a property in Lahore that I am interested in putting up for rent. Please let me know how to proceed.',
   },
 
   finalCta: {
     text: 'Not sure where to start? Tell the dealer what you need.',
     buttonText: 'Chat on WhatsApp',
     whatsappMessage:
-      'Assalam-o-Alaikum, I am looking for a rental property in Lahore. Could you suggest options matching my requirements?',
+      'Hello Irfan, I am looking for a rental property in Lahore. Could you suggest options matching my requirements?',
   },
 };

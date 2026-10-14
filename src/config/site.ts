@@ -39,16 +39,16 @@ export interface SiteConfig {
 }
 
 export const SITE: SiteConfig = {
-  dealerName: "[Dealer Name]",
-  brandShort: "[Dealer]",
+  dealerName: "Irfan Umri",
+  brandShort: "Irfan Umri",
   descriptor: "Property & Rentals",
-  tagline: "[Trusted Real Estate Advisory & Rental Management]",
+  tagline: "Rental Property Advisory in Lahore",
   city: "Lahore",
   country: "Pakistan",
-  phoneDisplay: "+92 3XX XXXXXXX",
-  phoneE164: "", // empty until supplied
-  whatsappNumber: "", // digits only, international format without +, e.g. 923001234567
-  email: "[email placeholder]",
+  phoneDisplay: "+92 301 6803398",
+  phoneE164: "+923016803398",
+  whatsappNumber: "923016803398", // digits only, international format without +
+  email: "[Email placeholder — to be provided]",
   address: "[Office address — to be provided]",
   officeHours: "[Opening hours — to be provided]",
   social: {

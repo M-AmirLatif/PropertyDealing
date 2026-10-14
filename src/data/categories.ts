@@ -9,13 +9,13 @@ export const PROPERTY_CATEGORIES: Category[] = [
     slug: 'houses',
     label: 'Houses',
     type: 'house',
-    blurb: 'Independent residential homes and detached family residences across prime sectors.',
+    blurb: 'Independent residential homes and detached family residences across established sectors.',
   },
   {
     slug: 'apartments',
     label: 'Apartments',
     type: 'apartment',
-    blurb: 'Modern urban apartments, luxury high-rises, and executive studio residences.',
+    blurb: 'Modern urban apartments, residential high-rises, and executive studio units.',
   },
   {
     slug: 'portions',

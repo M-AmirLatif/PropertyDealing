@@ -12,26 +12,23 @@ Before you step into the dealer's office or hop on a call, take 2 minutes to tai
 Open **[`src/config/site.ts`](file:///d:/PropertyDealing/src/config/site.ts)**:
 ```typescript
 export const SITE = {
-  // 1. Put the dealer's actual agency name:
-  dealerName: "Al-Miraj Real Estate & Rental Advisory", // or e.g. "Chaudhry Estates DHA"
-  brandShort: "Al-Miraj",
+  // 1. Dealer agency name:
+  dealerName: "Irfan Umri",
+  brandShort: "Irfan Umri",
   descriptor: "Property & Rentals",
-  tagline: "Curated residential & commercial rental register in Lahore",
+  tagline: "Rental Property Advisory in Lahore",
 
-  // 2. Put their direct contact number:
-  phoneDisplay: "+92 300 4567890",
-  phoneE164: "+923004567890",
+  // 2. Direct contact number:
+  phoneDisplay: "+92 301 6803398",
+  phoneE164: "+923016803398",
 
-  // 3. WhatsApp Deep Linking:
-  // Enter digits with country code, no + or spaces:
-  whatsappNumber: "923004567890", 
-  // (NOTE: If you leave this as "" or "00000000000", the demo will automatically pop up 
-  // an interactive preview modal showing the pre-composed WhatsApp message instead of opening WhatsApp.)
+  // 3. WhatsApp Deep Linking (digits only):
+  whatsappNumber: "923016803398",
 
-  // 4. Physical Office Location:
-  address: "Building 42-C, Commercial Broadway, DHA Phase 5, Lahore",
+  // 4. Physical Office Location & Hours:
+  address: "[Office address — to be provided]",
   city: "Lahore",
-  officeHours: "Monday – Saturday: 10:00 AM – 8:00 PM (Friday: 10:00 AM – 1:00 PM, 3:00 PM – 8:00 PM)",
+  officeHours: "[Opening hours — to be provided]",
 };
 ```
 
@@ -73,7 +70,7 @@ Upload the generated `dist/` directory directly to any static host:
 This pitch script is structured around the dealer's business pain points: tired WhatsApp forwards, repeated questions about rent and location, phantom aggregate listings, and lost leads.
 
 ### [Minute 0:00 – 1:00] The Hook: "Your Inventory Deserves Better Than WhatsApp Screen Grabs"
-> *"Chaudhry Sahab, right now when an executive or an overseas family asks you what rental houses or upper portions you have in DHA Phase 5 or Gulberg, what usually happens? Your team sends 35 separate photos on WhatsApp, 4 different voice notes, and then you have to explain the rent, gas connection status, and security deposit three times.*
+> *"Irfan Sahab, right now when an executive or an overseas family asks you what rental houses or upper portions you have in DHA Phase 5 or Gulberg, what usually happens? Your team sends 35 separate photos on WhatsApp, 4 different voice notes, and then you have to explain the rent, gas connection status, and security deposit three times.*
 >
 > *Five minutes later, they get distracted or lose the photos in their chat gallery. Aggregate portals are even worse—they are littered with fake listings, outdated rates from two years ago, and unverified brokers.*
 >
@@ -137,7 +134,7 @@ When the dealer asks: *"Can we expand this into a complete software system later
 ### Q: "How much does it cost to keep this website running each month?"
 **A:** *Because of the clean architectural design with zero bloated servers, hosting on global CDNs like Cloudflare or Vercel is completely **$0 / month**. The only recurring cost is your agency's `.pk` domain renewal (approximately Rs. 2,500 – Rs. 3,500 for two years).*
 
-### Q: "Can we put this on my own domain name (e.g., www.chaudhryestates.pk)?"
+### Q: "Can we put this on my own domain name (e.g., www.irfanumri.pk)?"
 **A:** *Yes, absolutely. The static build connects to any custom domain in minutes with an automatic SSL security padlock included.*
 
 ### Q: "Does this require an expensive server or database?"

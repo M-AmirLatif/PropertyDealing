@@ -57,9 +57,6 @@ export function RootLayout() {
           flexDirection: 'column',
           position: 'relative',
           outline: 'none',
-          paddingBottom: !isDetailPage
-            ? 'calc(56px + var(--sab))'
-            : 'var(--sab)',
         }}
       >
         <AnimatePresence mode="wait" initial={false}>

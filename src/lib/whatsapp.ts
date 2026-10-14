@@ -29,7 +29,7 @@ export function openWhatsApp(
   message?: string,
   onDemoFallback?: (msg: string) => void
 ): void {
-  const defaultMsg = `Assalam-o-Alaikum, I am inquiring about property services with ${SITE.dealerName}.`;
+  const defaultMsg = `Hello Irfan, I am inquiring about property services with ${SITE.dealerName}.`;
   const resolvedMsg = message && message.trim().length > 0 ? message.trim() : defaultMsg;
 
   if (hasWhatsApp) {
@@ -49,21 +49,21 @@ export function openWhatsApp(
  * Builds pre-filled property inquiry message with title, ref, area, rent and URL
  */
 export function buildPropertyInquiryMessage(property: Property, pageUrl: string): string {
-  return `Assalam-o-Alaikum, I am inquiring about "${property.title}" (REF #${padRef(property.refNo)}) in ${property.area}, monthly rent ${formatRent(property.rentPKR)}: ${pageUrl}`;
+  return `Hello Irfan, I am inquiring about "${property.title}" (REF #${padRef(property.refNo)}) in ${property.area}, monthly rent ${formatRent(property.rentPKR)}: ${pageUrl}`;
 }
 
 /**
  * Builds pre-filled request for viewing message
  */
 export function buildViewingMessage(property: Property, pageUrl: string): string {
-  return `Assalam-o-Alaikum, I would like to request an accompanied viewing for "${property.title}" (REF #${padRef(property.refNo)}) in ${property.area}: ${pageUrl}. Please let me know suitable visiting hours.`;
+  return `Hello Irfan, I would like to request an accompanied viewing for "${property.title}" (REF #${padRef(property.refNo)}) in ${property.area}: ${pageUrl}. Please let me know suitable visiting hours.`;
 }
 
 /**
  * Builds pre-filled inquiry for similar properties (used when property is rented)
  */
 export function buildSimilarMessage(property: Property): string {
-  return `Assalam-o-Alaikum, I noticed "${property.title}" (REF #${padRef(property.refNo)}) in ${property.area} has been rented. Could you share any similar available rentals in or around ${property.area}?`;
+  return `Hello Irfan, I noticed "${property.title}" (REF #${padRef(property.refNo)}) in ${property.area} has been rented. Could you share any similar available rentals in or around ${property.area}?`;
 }
 
 /**
@@ -78,7 +78,7 @@ export function buildContactInquiryMessage(data: {
   message?: string;
 }): string {
   const lines = [
-    `Assalam-o-Alaikum ${SITE.dealerName}, I am submitting an inquiry for rental property assistance in Lahore:`,
+    `Hello Irfan, I am submitting an inquiry for rental property assistance in Lahore:`,
     `- Name: ${data.name}`,
     `- Mobile: ${data.phone}`,
     `- Looking For: ${data.lookingFor}`,
@@ -104,7 +104,7 @@ export function buildOwnerListingMessage(data: {
   notes?: string;
 }): string {
   const lines = [
-    `Assalam-o-Alaikum ${SITE.dealerName}, I am a property owner interested in putting up a property for rent in Lahore:`,
+    `Hello Irfan, I am a property owner interested in listing a property for rent in Lahore:`,
     `- Owner: ${data.name}`,
     `- Contact: ${data.phone}`,
     `- Location / Address: ${data.location}`,
@@ -127,7 +127,7 @@ export function buildOwnerListingMessage(data: {
 export function buildShortlistMessage(properties: Property[]): string {
   const origin = typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : '';
   const lines = [
-    `Assalam-o-Alaikum ${SITE.dealerName}, I have shortlisted the following ${properties.length} rental properties in Lahore:`,
+    `Hello Irfan, I have shortlisted the following ${properties.length} rental properties in Lahore:`,
   ];
   properties.forEach((p, idx) => {
     const url = `${origin}#/properties/${p.slug}`;
@@ -143,5 +143,5 @@ export function buildShortlistMessage(properties: Property[]): string {
  * Backward-compatible helper
  */
 export function createPropertyInquiryMessage(propertyTitle: string, propertySlug: string): string {
-  return `Assalam-o-Alaikum, I am interested in "${propertyTitle}" (${propertySlug}) listed with ${SITE.dealerName}. Please share details.`;
+  return `Hello Irfan, I am interested in "${propertyTitle}" (${propertySlug}) listed with ${SITE.dealerName}. Please share details.`;
 }

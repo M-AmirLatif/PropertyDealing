@@ -69,10 +69,13 @@ export function HeroSearch() {
     >
       <form role="search" onSubmit={handleSubmit}>
         <div
+          className="hero-search-header"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 'var(--space-2)',
             marginBottom: 'var(--space-3)',
             paddingBottom: 'var(--space-2)',
             borderBottom: '1px solid var(--border)',
@@ -88,13 +91,13 @@ export function HeroSearch() {
             }}
           >
             <Search size={12} />
-            <span>Search Register Index</span>
+            <span>FIND A PROPERTY</span>
           </span>
           <span
             className="label"
             style={{ color: 'var(--text-muted)', fontSize: '0.625rem' }}
           >
-            Lahore Rental Inventory
+            Lahore Rentals
           </span>
         </div>
 

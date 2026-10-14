@@ -117,9 +117,7 @@ export function Button({
     opacity: disabled ? 0.45 : 1,
     transition: 'all var(--duration-fast) var(--ease-out)',
     position: 'relative',
-    userSelect: 'none',
-    textDecoration: 'none',
-    boxSizing: 'border-box',
+    whiteSpace: 'nowrap',
     ...sizeStyles[size],
     ...getVariantStyles(),
     ...style,
@@ -127,7 +125,7 @@ export function Button({
 
   const content = (
     <>
-      <span>{children}</span>
+      {children}
       {withArrow && (
         <ArrowRight
           size={size === 'sm' ? 14 : 16}

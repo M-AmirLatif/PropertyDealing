@@ -52,18 +52,30 @@ export function FinalCta() {
             </p>
           </div>
 
-          <div>
+          <div className="final-cta-action">
             <Button
               variant="whatsapp"
               size="lg"
               onClick={() => openWhatsApp(finalCta.whatsappMessage)}
             >
-              <MessageSquare size={16} style={{ marginRight: '8px' }} />
+              <MessageSquare size={16} />
               {finalCta.buttonText}
             </Button>
           </div>
         </div>
       </Container>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .final-cta-action {
+            width: 100% !important;
+          }
+          .final-cta-action > * {
+            width: 100% !important;
+            min-height: 54px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

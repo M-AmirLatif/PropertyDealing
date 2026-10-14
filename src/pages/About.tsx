@@ -261,9 +261,9 @@ export default function About() {
                 type="button"
                 variant="whatsapp"
                 size="lg"
-                onClick={() => openWhatsApp('Assalam-o-Alaikum, I would like to consult with the property dealer regarding rental advisory services.')}
+                onClick={() => openWhatsApp('Hello Irfan, I would like to consult regarding rental advisory services in Lahore.')}
               >
-                <MessageSquare size={16} style={{ marginRight: '8px' }} />
+                <MessageSquare size={16} />
                 {cta.buttonText}
               </Button>
             </div>
