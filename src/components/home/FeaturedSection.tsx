@@ -56,8 +56,9 @@ export function FeaturedSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.4 }}
+              style={{ display: 'flex', flexDirection: 'column' }}
             >
-              <PropertyCard property={leadProperty} variant="lead" priority />
+              <PropertyCard property={leadProperty} variant="lead" priority style={{ height: '100%' }} />
             </motion.div>
           )}
 
@@ -69,8 +70,9 @@ export function FeaturedSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.35, delay: index * 0.08 }}
+                style={{ flex: '1 1 0', display: 'flex', flexDirection: 'column' }}
               >
-                <PropertyCard property={prop} variant="compact" />
+                <PropertyCard property={prop} variant="compact" priority={index < 2} style={{ height: '100%' }} />
               </motion.div>
             ))}
           </div>
@@ -195,6 +197,15 @@ export function FeaturedSection() {
           gap: var(--space-4);
           justify-content: space-between;
         }
+        .featured-compact-col > div {
+          flex: 1 1 0;
+          display: flex;
+          flex-direction: column;
+        }
+        .featured-compact-col > div > article {
+          width: 100%;
+          height: 100%;
+        }
         .featured-mobile-carousel-wrap {
           display: none;
         }
@@ -208,6 +219,15 @@ export function FeaturedSection() {
           }
           .featured-mobile-carousel-wrap {
             display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          .featured-mobile-carousel {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
           }
         }
       `}</style>

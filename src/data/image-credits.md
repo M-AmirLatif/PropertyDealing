@@ -18,9 +18,9 @@ All photography used in this demonstration is sourced from [Unsplash](https://un
 | `P-004` | `drawing.webp` | living | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/a29a1bb7b86e) |
 | `P-004` | `kitchen.webp` | kitchen | Roam In Color | [Unsplash Photo](https://unsplash.com/photos/45b7abe8b7e1) |
 | `P-004` | `bedroom.webp` | bedroom | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/3dadae4b4ace) |
-| `P-005` | `exterior.webp` | cover | Scott Webb | [Unsplash Photo](https://unsplash.com/photos/55e3ad937233) |
-| `P-005` | `lounge.webp` | living | Sidekix Media | [Unsplash Photo](https://unsplash.com/photos/cde436f6a4d0) |
-| `P-005` | `bedroom.webp` | bedroom | Christopher Jolly | [Unsplash Photo](https://unsplash.com/photos/1758d7feb511) |
+| `P-005` | `exterior.webp` | cover | POOJAN THANEKAR | [Unsplash Photo](https://unsplash.com/photos/modern-concrete-and-wood-house-with-trees-F-slnkFvcag) |
+| `P-005` | `lounge.webp` | living | Imran Hossain | [Unsplash Photo](https://unsplash.com/photos/modern-living-room-with-marble-accents-and-comfortable-seating-FAxzZGeCjhM) |
+| `P-005` | `bedroom.webp` | bedroom | Home Makers Interior | [Unsplash Photo](https://unsplash.com/photos/modern-bedroom-with-bed-wardrobe-window-and-stylish-lighting-oKCZ-yw2Bn0) |
 | `P-006` | `courtyard-entrance.webp` | cover | R Architecture | [Unsplash Photo](https://unsplash.com/photos/17f0baa2a6c3) |
 | `P-006` | `lounge.webp` | living | R Architecture | [Unsplash Photo](https://unsplash.com/photos/724fe5c67fb0) |
 | `P-006` | `bedroom.webp` | bedroom | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/6a9f6d5f14af) |
@@ -42,7 +42,7 @@ All photography used in this demonstration is sourced from [Unsplash](https://un
 | `P-011` | `hall.webp` | living | R Architecture | [Unsplash Photo](https://unsplash.com/photos/ee6b68d14c68) |
 | `P-011` | `dining.webp` | dining | R Architecture | [Unsplash Photo](https://unsplash.com/photos/03d54c0aaf87) |
 | `P-011` | `bedroom.webp` | bedroom | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/0d45ed16cfbf) |
-| `P-012` | `facade.webp` | cover | Simone Hutsch | [Unsplash Photo](https://unsplash.com/photos/ee935f5f647a) |
+| `P-012` | `facade.webp` | cover | Budi Puspa Wijaya | [Unsplash Photo](https://unsplash.com/photos/a-couple-of-chairs-sitting-on-top-of-a-balcony-3Xw3fAIVFQQ) |
 | `P-012` | `drawing.webp` | living | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/d40978bb7378) |
 | `P-012` | `bedroom.webp` | bedroom | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/719a280e022f) |
 | `P-013` | `living.webp` | cover | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/78817add7ffb) |
@@ -51,7 +51,7 @@ All photography used in this demonstration is sourced from [Unsplash](https://un
 | `P-014` | `exterior.webp` | cover | Frames For Your Heart | [Unsplash Photo](https://unsplash.com/photos/9991f1c4c750) |
 | `P-014` | `lounge.webp` | living | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/dd6b41faaea6) |
 | `P-014` | `bedroom.webp` | bedroom | Spacejoy | [Unsplash Photo](https://unsplash.com/photos/841dd1904471) |
-| `P-015` | `building.webp` | cover | Sean Pollock | [Unsplash Photo](https://unsplash.com/photos/c627a92ad1ab) |
+| `P-015` | `building.webp` | cover | Musemind UX Agency | [Unsplash Photo](https://unsplash.com/photos/a-room-with-a-desk-and-a-chair-srTPWPbK0Dg) |
 | `P-015` | `workstations.webp` | office | Austin Distel | [Unsplash Photo](https://unsplash.com/photos/856f4ea42174) |
 | `P-015` | `workspace.webp` | office | Israel Andrade | [Unsplash Photo](https://unsplash.com/photos/c894fdcc538d) |
 | `site` | `hero.webp` | site-hero | R Architecture | [Unsplash Photo](https://unsplash.com/photos/be6161a56a0c) |
@@ -59,4 +59,4 @@ All photography used in this demonstration is sourced from [Unsplash](https://un
 
 ---
 
-*Pipeline generated on 2026-10-13 using `scripts/fetch-images.mjs`.*
+*Pipeline generated on 2026-10-14 using `scripts/fetch-images.mjs`.*

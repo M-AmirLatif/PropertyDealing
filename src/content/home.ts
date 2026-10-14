@@ -20,60 +20,60 @@ export interface CommitmentItem {
 
 export const HOME_CONTENT = {
   hero: {
-    label: 'LAHORE · RENTALS',
-    title: 'Lahore rentals, shown properly.',
+    label: 'KASUR · RENTALS',
+    title: 'Kasur rentals, shown properly.',
     subtitle:
-      'Browse houses, apartments, portions and commercial spaces — then talk to the dealer directly on WhatsApp.',
+      'Browse houses, apartments, portions and commercial spaces in Kasur — then talk to the dealer directly on WhatsApp.',
     primaryCta: 'Explore properties',
     whatsappCta: 'Message on WhatsApp',
     whatsappMessage:
-      'Hello Irfan, I am exploring rental properties in Lahore and would like assistance with finding a place.',
-    surveyCaption: 'ILLUSTRATIVE IMAGE · LAHORE',
+      'Hello Irfan, I am exploring rental properties in Kasur and would like assistance with finding a place.',
+    surveyCaption: 'ILLUSTRATIVE IMAGE · KASUR',
   },
 
   areaStrip: {
-    label: 'SURVEY LOCATIONS',
+    label: 'AREAS WE COVER',
   },
 
   featured: {
-    label: '01 · FEATURED REGISTER',
-    title: 'Curated Lahore Residences',
+    label: '01 · FEATURED',
+    title: 'Featured properties',
     linkText: 'View all properties',
   },
 
   browseByType: {
-    label: '02 · PROPERTY TYPOLOGIES',
-    title: 'Browse By Category',
+    label: '02 · PROPERTY TYPES',
+    title: 'Browse by type',
     subtitle:
-      'Architectural registers organized by structure, scale, and occupancy needs.',
+      'Houses, apartments, portions and commercial spaces organized by your needs.',
   },
 
   locations: {
-    label: '03 · TERRITORIAL COVERAGE',
-    title: 'Lahore Localities',
+    label: '03 · AREAS WE COVER',
+    title: 'Browse by area',
     subtitle:
-      'Explore catalogued registers across Lahore’s primary residential sectors and commercial avenues.',
+      'Explore rental properties across Kasur’s main residential and commercial areas.',
     footnote:
-      'Sample areas for the Lahore demo — extendable to other cities.',
+      'Sample areas for the Kasur demo — extendable to other cities and towns.',
   },
 
   howItWorks: {
     label: '04 · THE RENTAL PROCESS',
     title: 'How It Works',
     subtitle:
-      'From register discovery to key handover, coordinated directly through one point of contact.',
+      'From browsing properties to key handover, coordinated directly through one point of contact.',
     steps: [
       {
         number: '01',
         title: 'Tell us what you need',
         description:
-          'Filter by preferred Lahore locality, monthly rental bracket, and property category.',
+          'Filter by preferred Kasur area, monthly rent budget, and property type.',
       },
       {
         number: '02',
         title: 'Browse and shortlist',
         description:
-          'Review high-resolution architectural survey photos, documented floor spaces, and save listings to compare.',
+          'Review clear photos, measured floor spaces, and save listings to compare.',
       },
       {
         number: '03',
@@ -91,9 +91,9 @@ export const HOME_CONTENT = {
   },
 
   howWeWork: {
-    label: '05 · OPERATIONAL STANDARDS',
+    label: '05 · OUR STANDARDS',
     pullQuote:
-      'A transparent advisory practice built on direct communication and accurate listings.',
+      'Direct communication, clear details, and accurate listings.',
     // NOTE FOR CLIENT / PRESENTER:
     // Replace these three principles with your actual business standards or dealer commitments.
     // Do not add fake ratings, years in business, awards, or fabricated client statistics.
@@ -106,7 +106,7 @@ export const HOME_CONTENT = {
       {
         title: 'Direct conversation, no forms to wait on',
         description:
-          'No automated call centers or black-box web forms. Reach out directly on WhatsApp to speak with the consultant managing the register.',
+          'No automated call centers or long delays. Reach out directly on WhatsApp to speak with Irfan Umri.',
       },
       {
         title: 'Owners and tenants both looked after',
@@ -120,17 +120,17 @@ export const HOME_CONTENT = {
     label: '06 · PROPERTY OWNERS',
     title: 'Have a property to rent out?',
     description:
-      'We help owners present their properties clearly and handle enquiries across DHA, Gulberg, Bahria Town, and Johar Town.',
+      'We help owners in Kasur present their properties clearly and handle enquiries.',
     primaryButton: 'List Your Property',
     secondaryButton: 'Discuss on WhatsApp',
     whatsappMessage:
-      'Hello Irfan, I own a property in Lahore that I am interested in putting up for rent. Please let me know how to proceed.',
+      'Hello Irfan, I own a property in Kasur that I am interested in putting up for rent. Please let me know how to proceed.',
   },
 
   finalCta: {
     text: 'Not sure where to start? Tell the dealer what you need.',
     buttonText: 'Chat on WhatsApp',
     whatsappMessage:
-      'Hello Irfan, I am looking for a rental property in Lahore. Could you suggest options matching my requirements?',
+      'Hello Irfan, I am looking for a rental property in Kasur. Could you suggest options matching my requirements?',
   },
 };

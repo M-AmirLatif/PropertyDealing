@@ -2,7 +2,7 @@ import { useState, useEffect, type FormEvent } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Camera } from 'lucide-react';
 import type { Property, PropertyType, AvailabilityStatus, CoveredArea } from '../../types';
-import { LAHORE_AREAS } from '../../data/areas';
+import { KASUR_AREAS } from '../../data/areas';
 import { validateRequired, validateRent } from '../../lib/validation';
 import { TextField, TextareaField, SelectField, FormErrorSummary, type FormErrorItem } from '../forms';
 import { Button } from '../ui/Button';
@@ -27,7 +27,7 @@ export function PropertyDrawer({
   // Form state
   const [title, setTitle] = useState('');
   const [type, setType] = useState<PropertyType>('house');
-  const [areaSlug, setAreaSlug] = useState('dha-phase-5');
+  const [areaSlug, setAreaSlug] = useState('ideal-garden');
   const [rentInput, setRentInput] = useState('');
   const [bedrooms, setBedrooms] = useState<string>('3');
   const [bathrooms, setBathrooms] = useState<string>('3');
@@ -67,7 +67,7 @@ export function PropertyDrawer({
       // Default clean state for Add
       setTitle('');
       setType('house');
-      setAreaSlug(LAHORE_AREAS[0]?.slug || 'dha-phase-5');
+      setAreaSlug(KASUR_AREAS[0]?.slug || 'ideal-garden');
       setRentInput('');
       setBedrooms('3');
       setBathrooms('3');
@@ -77,7 +77,7 @@ export function PropertyDrawer({
       setStatus('available');
       setFeatured(false);
       setDescription(
-        'Well-situated residential property in prime sector featuring contemporary layout, continuous utility provisioning, and direct road connectivity.\n\nIdeal for families seeking secure surroundings, proximity to sector recreational parks, and quality building finishes.'
+        'Well-situated residential property in prime locality featuring contemporary layout, continuous utility provisioning, and direct road connectivity.\n\nIdeal for families seeking secure surroundings, proximity to community recreational parks, and quality building finishes.'
       );
     }
     setErrors({});
@@ -126,8 +126,8 @@ export function PropertyDrawer({
     }
 
     // Resolve Area Name
-    const matchedArea = LAHORE_AREAS.find((a) => a.slug === areaSlug);
-    const areaName = matchedArea ? matchedArea.name : 'DHA Phase 5';
+    const matchedArea = KASUR_AREAS.find((a) => a.slug === areaSlug);
+    const areaName = matchedArea ? matchedArea.name : 'Ideal Garden Housing Scheme';
 
     const cleanRent = rentVal.value!;
     const beds = bedrooms.trim() ? parseInt(bedrooms, 10) : null;
@@ -183,7 +183,7 @@ export function PropertyDrawer({
         refNo: newRefNo,
         title: title.trim(),
         type,
-        city: 'Lahore',
+        city: 'Kasur',
         area: areaName,
         areaSlug,
         rentPKR: cleanRent,
@@ -192,7 +192,7 @@ export function PropertyDrawer({
         coveredArea,
         plotSize: `${areaNum} ${coveredAreaUnit === 'sq ft' ? 'sq ft' : coveredAreaUnit === 'kanal' ? 'Kanal' : 'Marla'}`,
         furnished,
-        description: descParagraphs.length >= 2 ? (descParagraphs.slice(0, 2) as [string, string]) : [descParagraphs[0] || 'Quality rental listing in Lahore prime sector.', 'Contact the dealer for tenancy terms and inspection.'],
+        description: descParagraphs.length >= 2 ? (descParagraphs.slice(0, 2) as [string, string]) : [descParagraphs[0] || 'Quality rental listing in Kasur prime locality.', 'Contact the dealer for tenancy terms and inspection.'],
         highlights: [
           'Surveyed residential rental listing',
           'Direct landlord presentation via dealer',
@@ -210,7 +210,7 @@ export function PropertyDrawer({
             srcSmall: '/images/site/placeholder-property.svg',
             alt: title.trim(),
             position: '50% 50%',
-            credit: 'Architectural Register Mock',
+            credit: 'Demo Listing Photo',
           },
         ],
         status,
@@ -391,10 +391,10 @@ export function PropertyDrawer({
               <SelectField
                 id="drawer-area"
                 name="areaSlug"
-                label="Lahore Sector"
+                label="Kasur Locality"
                 value={areaSlug}
                 onChange={(e) => setAreaSlug(e.target.value)}
-                options={LAHORE_AREAS.map((a) => ({
+                options={KASUR_AREAS.map((a) => ({
                   value: a.slug,
                   label: a.name,
                 }))}

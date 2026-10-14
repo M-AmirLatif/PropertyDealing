@@ -35,7 +35,7 @@ export function TypeIndex() {
   const defaultImg = {
     src: '/images/site/hero.webp',
     srcSmall: '/images/site/hero-sm.webp',
-    alt: 'Lahore architectural property',
+    alt: 'Architectural rental property',
   };
 
   const typologies: TypologyRow[] = [
@@ -127,7 +127,7 @@ export function TypeIndex() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: 'clamp(1rem, 2vw, 1.75rem) 0',
+                    padding: 'clamp(1rem, 2vw, 1.75rem) 4px',
                     borderBottom: '1px solid var(--border)',
                     textDecoration: 'none',
                     color: 'inherit',
@@ -139,8 +139,9 @@ export function TypeIndex() {
                     style={{
                       display: 'flex',
                       alignItems: 'baseline',
-                      gap: 'clamp(0.75rem, 2vw, 1.75rem)',
+                      gap: 'clamp(0.5rem, 1.5vw, 1.5rem)',
                       flex: 1,
+                      minWidth: 0,
                     }}
                   >
                     <span
@@ -150,6 +151,7 @@ export function TypeIndex() {
                         color: isActive ? 'var(--copper-600)' : 'var(--text-brass)',
                         fontWeight: 600,
                         transition: 'color var(--duration-fast)',
+                        flexShrink: 0,
                       }}
                     >
                       {item.num}
@@ -159,11 +161,13 @@ export function TypeIndex() {
                       className="type-row-title"
                       style={{
                         fontFamily: 'var(--font-display)',
-                        fontSize: 'clamp(1.25rem, 2.5vw, 1.85rem)',
+                        fontSize: 'clamp(1.15rem, 2.4vw, 1.85rem)',
                         fontWeight: 500,
                         color: isActive ? 'var(--text-heading)' : 'var(--charcoal-700)',
                         margin: 0,
                         transition: 'color var(--duration-fast)',
+                        wordBreak: 'break-word',
+                        minWidth: 0,
                       }}
                     >
                       {item.label}
@@ -175,7 +179,8 @@ export function TypeIndex() {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: 'var(--space-3)',
+                      gap: 'clamp(10px, 2vw, 16px)',
+                      flexShrink: 0,
                     }}
                   >
                     {/* Mobile inline thumbnail */}
@@ -221,6 +226,8 @@ export function TypeIndex() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        marginLeft: 'var(--space-2)',
+                        flexShrink: 0,
                         color: isActive ? 'var(--copper-600)' : 'var(--text-muted)',
                         transition: 'transform var(--duration-fast) var(--ease-out), color var(--duration-fast)',
                       }}
@@ -251,7 +258,7 @@ export function TypeIndex() {
                   transition={{ duration: 0.25 }}
                 >
                   <SurveyFrame
-                    caption={`TYPOLOGY REF · ${currentPreview.num} · ${currentPreview.label.toUpperCase()}`}
+                    caption={`${currentPreview.num} · ${currentPreview.label.toUpperCase()}`}
                     aspectRatio="4/3"
                     markColor="brass"
                   >
@@ -267,6 +274,7 @@ export function TypeIndex() {
                         srcSmall={currentPreview.sampleImage.srcSmall}
                         alt={currentPreview.sampleImage.alt}
                         position="50% 50%"
+                        priority
                       />
                     </div>
                   </SurveyFrame>
@@ -298,8 +306,15 @@ export function TypeIndex() {
           .type-index-list-col {
             grid-column: span 12 !important;
           }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
           .type-row-mobile-thumb {
             display: block !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .type-row-mobile-thumb {
+            display: none !important;
           }
         }
       `}</style>

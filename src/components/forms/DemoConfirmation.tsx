@@ -115,7 +115,7 @@ export function DemoConfirmation({
             margin: 0,
           }}
         >
-          <strong>This is a demonstration. Nothing was sent or saved.</strong> In the live version, this inquiry would be delivered directly to {SITE.dealerName} for immediate review and follow-up.
+          <strong>This is a demonstration. Nothing was sent or saved.</strong> In the live version, this inquiry would be delivered directly to {SITE.dealerName} in {SITE.city} for immediate review and follow-up.
         </p>
       </div>
 

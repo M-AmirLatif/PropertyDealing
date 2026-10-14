@@ -1,5 +1,5 @@
 import type { Property, PropertyType } from '../types';
-import { LAHORE_AREAS } from '../data/areas';
+import { KASUR_AREAS } from '../data/areas';
 
 export type SortOption = 'newest' | 'rent-asc' | 'rent-desc';
 
@@ -49,7 +49,7 @@ export function parseFilters(searchParams: URLSearchParams): Filters {
 
   // 2. Area Slug
   const rawArea = searchParams.get('area') || '';
-  const area = LAHORE_AREAS.some((a) => a.slug === rawArea) ? rawArea : '';
+  const area = KASUR_AREAS.some((a) => a.slug === rawArea) ? rawArea : '';
 
   // 3. Property Types (supports comma-separated string or multiple entries)
   const typeParams = searchParams.getAll('type').join(',');
@@ -132,7 +132,6 @@ export function parseFilters(searchParams: URLSearchParams): Filters {
 /**
  * Filter properties by the parsed Filters criteria.
  * Case-insensitive, trims whitespace, ignores punctuation.
- * "dha" matches every DHA phase.
  * Bedroom filter explicitly excludes commercial spaces.
  */
 export function applyFilters(properties: Property[], filters: Filters): Property[] {
@@ -141,13 +140,10 @@ export function applyFilters(properties: Property[], filters: Filters): Property
     if (filters.q) {
       const cleanQ = filters.q.toLowerCase().replace(/[^\w\s]/g, '').trim();
       if (cleanQ) {
-        const isDhaQuery = cleanQ === 'dha';
-
         const titleMatch = p.title.toLowerCase().replace(/[^\w\s]/g, '').includes(cleanQ);
-        const areaMatch = isDhaQuery
-          ? (p.areaSlug.includes('dha') || p.area.toLowerCase().includes('dha'))
-          : p.area.toLowerCase().replace(/[^\w\s]/g, '').includes(cleanQ) ||
-            p.areaSlug.replace(/[^\w\s]/g, '').includes(cleanQ);
+        const areaMatch =
+          p.area.toLowerCase().replace(/[^\w\s]/g, '').includes(cleanQ) ||
+          p.areaSlug.replace(/[^\w\s]/g, '').includes(cleanQ);
 
         const descText = Array.isArray(p.description) ? p.description.join(' ') : String(p.description);
         const descMatch = descText.toLowerCase().replace(/[^\w\s]/g, '').includes(cleanQ);

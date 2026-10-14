@@ -57,8 +57,8 @@ export function SegmentedControl({
             style={{
               position: 'relative',
               zIndex: 2,
-              padding: '8px 2px',
-              minHeight: '40px',
+              padding: '4px 2px',
+              minHeight: '34px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

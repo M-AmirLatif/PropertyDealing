@@ -1,17 +1,23 @@
 /**
  * ============================================================================
- * SITE CONFIGURATION & EDITABLE PLACEHOLDERS
+ * SITE CONFIGURATION & DEMO CONTACT DATA
  * ============================================================================
- * This file contains central business information and contact placeholders.
- * When real client information becomes available, update the values below:
+ * This file contains central business information.
  *
- * 1. dealerName / brandShort: Replace with the actual agency or dealer name.
- * 2. phoneDisplay / phoneE164: Provide display format and standard E.164.
- * 3. whatsappNumber: Digits only in international format without '+' (e.g. "923001234567").
- *    When left empty (""), hasWhatsApp will evaluate to false and WhatsApp CTAs
- *    will gracefully hide or fall back.
- * 4. email / address / officeHours: Replace placeholders with confirmed details.
- * 5. social: Replace null with valid profile URLs once provided.
+ * Real dealer details:
+ * - dealerName / brandShort: "Irfan Umri"
+ * - phoneDisplay: "+92 301 6803398"
+ * - phoneE164: "+923016803398"
+ * - whatsappNumber: "923016803398"
+ *
+ * Sample contact details for the demo:
+ * - address: "Shop No. 12, Main Road, Kasur, Punjab, Pakistan"
+ * - email: "contact@example.com"
+ * - officeHours: "Mon–Sat 10:00 AM – 7:00 PM · Sunday closed"
+ * - sampleContactDetails: true
+ *
+ * When confirmed client information becomes available, update address, email,
+ * and officeHours below, then set sampleContactDetails to false.
  * ============================================================================
  */
 
@@ -22,35 +28,53 @@ export interface SiteSocial {
   linkedin: string | null;
 }
 
+export interface SiteAddress {
+  line1: string;
+  locality: string;
+  province: string;
+  country: string;
+  display: string;
+}
+
 export interface SiteConfig {
   dealerName: string;
   brandShort: string;
   descriptor: string;
   tagline: string;
   city: string;
+  province: string;
   country: string;
   phoneDisplay: string;
   phoneE164: string;
   whatsappNumber: string;
   email: string;
-  address: string;
+  address: SiteAddress;
   officeHours: string;
   social: SiteSocial;
+  sampleContactDetails: boolean;
 }
 
 export const SITE: SiteConfig = {
   dealerName: "Irfan Umri",
   brandShort: "Irfan Umri",
   descriptor: "Property & Rentals",
-  tagline: "Rental Property Advisory in Lahore",
-  city: "Lahore",
+  tagline: "Rental Properties in Kasur",
+  city: "Kasur",
+  province: "Punjab",
   country: "Pakistan",
   phoneDisplay: "+92 301 6803398",
   phoneE164: "+923016803398",
   whatsappNumber: "923016803398", // digits only, international format without +
-  email: "[Email placeholder — to be provided]",
-  address: "[Office address — to be provided]",
-  officeHours: "[Opening hours — to be provided]",
+  email: "contact@example.com",
+  address: {
+    line1: "Shop No. 12, Main Road",
+    locality: "Kasur",
+    province: "Punjab",
+    country: "Pakistan",
+    display: "Shop No. 12, Main Road, Kasur, Punjab, Pakistan",
+  },
+  officeHours: "Mon–Sat 10:00 AM – 7:00 PM · Sunday closed",
+  sampleContactDetails: true,
   social: {
     facebook: null,
     instagram: null,

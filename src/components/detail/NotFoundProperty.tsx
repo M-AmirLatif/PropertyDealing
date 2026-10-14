@@ -52,7 +52,7 @@ export function NotFoundProperty() {
               marginBottom: 'var(--space-5)',
             }}
           >
-            The requested register entry does not exist or has been removed from the demonstration catalog.
+            The requested property listing does not exist or has been removed from the demonstration catalog.
           </p>
 
           <div
@@ -105,7 +105,7 @@ export function NotFoundProperty() {
                 textDecoration: 'none',
               }}
             >
-              View register &rarr;
+              View all properties &rarr;
             </Link>
           </div>
 

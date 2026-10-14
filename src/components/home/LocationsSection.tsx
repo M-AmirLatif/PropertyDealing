@@ -5,16 +5,16 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Container } from '../ui/Container';
 import { SurveyFrame } from '../ui/SurveyFrame';
 import { SurveyImage } from '../property/SurveyImage';
-import { LAHORE_AREAS, getAreaPropertyCount } from '../../data/areas';
+import { KASUR_AREAS, getAreaPropertyCount } from '../../data/areas';
 import { usePropertiesStore } from '../../context/PropertiesContext';
 import { HOME_CONTENT } from '../../content/home';
 
 export function LocationsSection() {
   const { properties } = usePropertiesStore();
-  const [activeAreaSlug, setActiveAreaSlug] = useState(LAHORE_AREAS[0].slug);
+  const [activeAreaSlug, setActiveAreaSlug] = useState(KASUR_AREAS[0].slug);
 
-  // Focus on 7 prominent Lahore areas for the editorial list
-  const primaryAreas = LAHORE_AREAS.slice(0, 7);
+  // All 9 Kasur areas for the editorial list
+  const primaryAreas = KASUR_AREAS;
 
   const activeArea = primaryAreas.find((a) => a.slug === activeAreaSlug) || primaryAreas[0];
   const activeCoverProp = properties.find((p) => p.id === activeArea.coverPropertyId) || properties[0];
@@ -35,6 +35,7 @@ export function LocationsSection() {
         paddingBottom: 'clamp(3.5rem, 7vw, 7rem)',
         position: 'relative',
         overflow: 'hidden',
+        scrollMarginTop: '76px',
       }}
     >
       <Container>
@@ -112,7 +113,7 @@ export function LocationsSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: 'clamp(1rem, 2vw, 1.5rem) 0',
+                    padding: 'clamp(1rem, 2vw, 1.5rem) 4px',
                     borderBottom: '1px solid rgba(217, 208, 190, 0.15)',
                     textDecoration: 'none',
                     color: 'inherit',
@@ -123,8 +124,9 @@ export function LocationsSection() {
                     style={{
                       display: 'flex',
                       alignItems: 'baseline',
-                      gap: 'clamp(0.75rem, 2vw, 1.5rem)',
+                      gap: 'clamp(0.5rem, 1.5vw, 1.5rem)',
                       flex: 1,
+                      minWidth: 0,
                     }}
                   >
                     <span
@@ -133,6 +135,7 @@ export function LocationsSection() {
                         fontSize: '0.8125rem',
                         color: 'var(--text-brass-on-dark)',
                         fontWeight: 600,
+                        flexShrink: 0,
                       }}
                     >
                       {String(index + 1).padStart(2, '0')}
@@ -141,11 +144,12 @@ export function LocationsSection() {
                       className="location-row-name"
                       style={{
                         fontFamily: 'var(--font-display)',
-                        fontSize: 'clamp(1.35rem, 2.6vw, 2rem)',
+                        fontSize: 'clamp(1.2rem, 2.4vw, 2rem)',
                         fontWeight: 500,
                         color: isActive ? 'var(--ivory-50)' : 'rgba(251, 248, 242, 0.7)',
                         margin: 0,
                         transition: 'color var(--duration-fast)',
+                        wordBreak: 'break-word',
                       }}
                     >
                       {area.name}
@@ -157,7 +161,8 @@ export function LocationsSection() {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: 'var(--space-3)',
+                      gap: 'clamp(10px, 2vw, 16px)',
+                      flexShrink: 0,
                     }}
                   >
                     {/* Mobile Thumbnail */}
@@ -203,6 +208,8 @@ export function LocationsSection() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        marginLeft: 'var(--space-2)',
+                        flexShrink: 0,
                         color: isActive ? 'var(--text-brass-on-dark)' : 'rgba(201, 208, 181, 0.6)',
                         transition: 'transform var(--duration-fast) var(--ease-out), color var(--duration-fast)',
                       }}
@@ -247,7 +254,7 @@ export function LocationsSection() {
                   transition={{ duration: 0.3 }}
                 >
                   <SurveyFrame
-                    caption={`SECTOR REGISTER · ${activeArea.name.toUpperCase()} · LAHORE`}
+                    caption={`${activeArea.name.toUpperCase()} · KASUR`}
                     aspectRatio="4/3"
                     markColor="brass"
                     style={{
@@ -267,6 +274,7 @@ export function LocationsSection() {
                         srcSmall={coverImage.srcSmall}
                         alt={activeArea.name}
                         position="50% 50%"
+                        priority
                       />
                     </div>
                   </SurveyFrame>
@@ -331,8 +339,15 @@ export function LocationsSection() {
           .locations-list-col {
             grid-column: span 12 !important;
           }
+        }
+        @media (min-width: 641px) and (max-width: 900px) {
           .location-row-mobile-thumb {
             display: block !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .location-row-mobile-thumb {
+            display: none !important;
           }
         }
       `}</style>

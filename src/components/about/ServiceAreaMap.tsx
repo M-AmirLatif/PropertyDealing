@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Info } from 'lucide-react';
-import { LAHORE_AREAS, getAreaPropertyCount } from '../../data/areas';
+import { KASUR_AREAS, getAreaPropertyCount } from '../../data/areas';
 import { usePropertiesStore } from '../../context/PropertiesContext';
 
 interface NodePosition {
@@ -10,27 +10,27 @@ interface NodePosition {
 }
 
 const SCHEMATIC_COORDS: NodePosition[] = [
-  { slug: 'gulberg', x: 400, y: 130 },
-  { slug: 'model-town', x: 380, y: 220 },
-  { slug: 'johar-town', x: 270, y: 200 },
-  { slug: 'wapda-town', x: 230, y: 290 },
-  { slug: 'valencia-town', x: 200, y: 370 },
-  { slug: 'bahria-town', x: 130, y: 230 },
-  { slug: 'dha-phase-5', x: 550, y: 190 },
-  { slug: 'dha-phase-6', x: 670, y: 250 },
-  { slug: 'askari-11', x: 660, y: 130 },
+  { slug: 'circle-road', x: 400, y: 130 },
+  { slug: 'railway-road', x: 380, y: 220 },
+  { slug: 'shah-inayat-colony', x: 270, y: 200 },
+  { slug: 'wapda-colony', x: 230, y: 290 },
+  { slug: 'london-city', x: 200, y: 370 },
+  { slug: 'garden-view', x: 130, y: 230 },
+  { slug: 'model-garden', x: 550, y: 190 },
+  { slug: 'ideal-garden', x: 670, y: 250 },
+  { slug: 'elite-city', x: 660, y: 130 },
 ];
 
 const CONNECTIONS = [
-  ['gulberg', 'model-town'],
-  ['gulberg', 'dha-phase-5'],
-  ['gulberg', 'askari-11'],
-  ['model-town', 'johar-town'],
-  ['johar-town', 'wapda-town'],
-  ['johar-town', 'bahria-town'],
-  ['wapda-town', 'valencia-town'],
-  ['dha-phase-5', 'dha-phase-6'],
-  ['dha-phase-5', 'askari-11'],
+  ['circle-road', 'railway-road'],
+  ['circle-road', 'model-garden'],
+  ['circle-road', 'elite-city'],
+  ['railway-road', 'shah-inayat-colony'],
+  ['shah-inayat-colony', 'wapda-colony'],
+  ['shah-inayat-colony', 'garden-view'],
+  ['wapda-colony', 'london-city'],
+  ['model-garden', 'ideal-garden'],
+  ['model-garden', 'elite-city'],
 ];
 
 export function ServiceAreaMap() {
@@ -71,7 +71,7 @@ export function ServiceAreaMap() {
             margin: '0 0 var(--space-2) 0',
           }}
         >
-          Lahore Service Network
+          Kasur Service Network
         </h2>
         <p
           style={{
@@ -82,7 +82,7 @@ export function ServiceAreaMap() {
             lineHeight: 1.5,
           }}
         >
-          Click any territory node to explore current rental registers in that locality.
+          Click any territory node to explore current rental listings in that locality.
         </p>
       </div>
 
@@ -137,7 +137,7 @@ export function ServiceAreaMap() {
 
           {/* Nodes */}
           {SCHEMATIC_COORDS.map((node) => {
-            const area = LAHORE_AREAS.find((a) => a.slug === node.slug);
+            const area = KASUR_AREAS.find((a) => a.slug === node.slug);
             if (!area) return null;
             const count = getAreaPropertyCount(area.slug, properties);
 
@@ -182,7 +182,7 @@ export function ServiceAreaMap() {
                   fontSize="9"
                   fill="var(--text-muted)"
                 >
-                  ({count} {count === 1 ? 'entry' : 'entries'})
+                  ({count} {count === 1 ? 'listing' : 'listings'})
                 </text>
               </g>
             );
@@ -191,7 +191,7 @@ export function ServiceAreaMap() {
 
         {/* HTML Link Overlays positioned exactly on each node */}
         {SCHEMATIC_COORDS.map((node) => {
-          const area = LAHORE_AREAS.find((a) => a.slug === node.slug);
+          const area = KASUR_AREAS.find((a) => a.slug === node.slug);
           if (!area) return null;
           const leftPct = (node.x / 800) * 100;
           const topPct = (node.y / 440) * 100;
@@ -226,7 +226,7 @@ export function ServiceAreaMap() {
           marginTop: 'var(--space-3)',
         }}
       >
-        {LAHORE_AREAS.map((area) => {
+        {KASUR_AREAS.map((area) => {
           const count = getAreaPropertyCount(area.slug, properties);
           return (
             <Link
@@ -290,7 +290,7 @@ export function ServiceAreaMap() {
             color: 'var(--text-muted)',
           }}
         >
-          Sample sectors for the Lahore demonstration — expandable to additional housing schemes and other cities.
+          Sample sectors for the Kasur demonstration — expandable to additional housing schemes and other cities and towns.
         </span>
       </div>
 

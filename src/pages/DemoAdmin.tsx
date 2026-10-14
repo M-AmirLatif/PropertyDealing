@@ -112,7 +112,7 @@ export default function DemoAdmin() {
   const handleResetData = () => {
     resetProperties();
     setNotification({
-      message: 'Demo dataset restored to original 15 fictional Lahore properties.',
+      message: 'Demo dataset restored to original 15 fictional Kasur properties.',
     });
   };
 

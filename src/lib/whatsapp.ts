@@ -78,7 +78,7 @@ export function buildContactInquiryMessage(data: {
   message?: string;
 }): string {
   const lines = [
-    `Hello Irfan, I am submitting an inquiry for rental property assistance in Lahore:`,
+    `Hello Irfan, I am submitting an inquiry for rental property assistance in Kasur:`,
     `- Name: ${data.name}`,
     `- Mobile: ${data.phone}`,
     `- Looking For: ${data.lookingFor}`,
@@ -104,7 +104,7 @@ export function buildOwnerListingMessage(data: {
   notes?: string;
 }): string {
   const lines = [
-    `Hello Irfan, I am a property owner interested in listing a property for rent in Lahore:`,
+    `Hello Irfan, I am a property owner interested in listing a property for rent in Kasur:`,
     `- Owner: ${data.name}`,
     `- Contact: ${data.phone}`,
     `- Location / Address: ${data.location}`,
@@ -127,7 +127,7 @@ export function buildOwnerListingMessage(data: {
 export function buildShortlistMessage(properties: Property[]): string {
   const origin = typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : '';
   const lines = [
-    `Hello Irfan, I have shortlisted the following ${properties.length} rental properties in Lahore:`,
+    `Hello Irfan, I have shortlisted the following ${properties.length} rental properties in Kasur:`,
   ];
   properties.forEach((p, idx) => {
     const url = `${origin}#/properties/${p.slug}`;

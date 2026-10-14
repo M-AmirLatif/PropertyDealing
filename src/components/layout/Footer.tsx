@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SITE, DEMO_DISCLAIMER } from '../../config/site';
 import { Logo } from '../ui/Logo';
 import { MapPin, Phone, Mail, Clock, ShieldCheck } from 'lucide-react';
 import { useDealerPhone } from '../../hooks/useDealerPhone';
+import { handleAnchorClick } from '../../lib/scroll';
 
 export function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const { callDealer } = useDealerPhone();
 
@@ -45,9 +48,7 @@ export function Footer() {
                 marginTop: 'var(--space-4)',
               }}
             >
-              Architectural survey register and rental property advisory in Lahore,
-              Pakistan. Assisting with rental portions, family residences,
-              and commercial spaces across DHA, Gulberg, and established localities.
+              Rental properties across Kasur, shown clearly. Contact Irfan Umri on WhatsApp to arrange a viewing.
             </p>
           </div>
 
@@ -106,12 +107,16 @@ export function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
               <li>
                 <Link to="/properties" style={{ color: 'var(--text-on-dark)', fontSize: 'var(--fs-small)' }}>
-                  All Properties Register
+                  All properties
                 </Link>
               </li>
               <li>
-                <Link to="/properties" style={{ color: 'var(--olive-200)', fontSize: 'var(--fs-small)' }}>
-                  Lahore Localities
+                <Link
+                  to="/#locations"
+                  onClick={(e) => handleAnchorClick(e, '/#locations', location.pathname, navigate)}
+                  style={{ color: 'var(--olive-200)', fontSize: 'var(--fs-small)' }}
+                >
+                  Areas
                 </Link>
               </li>
               <li>
@@ -132,28 +137,28 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: Advisory / Agency */}
+          {/* Column 2: About & Contact */}
           <div>
             <span
               className="label"
               style={{ color: 'var(--text-brass-on-dark)', display: 'block', marginBottom: 'var(--space-4)' }}
             >
-              02 · Advisory &amp; Dealer
+              02 · About &amp; Contact
             </span>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
               <li>
                 <Link to="/about" style={{ color: 'var(--text-on-dark)', fontSize: 'var(--fs-small)' }}>
-                  About Our Practice
+                  About
                 </Link>
               </li>
               <li>
                 <Link to="/contact" style={{ color: 'var(--olive-200)', fontSize: 'var(--fs-small)' }}>
-                  Office Contact &amp; Inquiry
+                  Contact
                 </Link>
               </li>
               <li>
                 <Link to="/saved" style={{ color: 'var(--olive-200)', fontSize: 'var(--fs-small)' }}>
-                  Saved Favorites
+                  Saved properties
                 </Link>
               </li>
               <li>
@@ -175,7 +180,7 @@ export function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', fontSize: 'var(--fs-small)', color: 'var(--olive-200)' }}>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
                 <MapPin size={16} style={{ color: 'var(--brass-500)', flexShrink: 0, marginTop: '3px' }} />
-                <span>{SITE.address}</span>
+                <span>{SITE.address.display}</span>
               </div>
               <button
                 type="button"
@@ -206,11 +211,24 @@ export function Footer() {
                 <Clock size={16} style={{ color: 'var(--brass-500)', flexShrink: 0 }} />
                 <span>{SITE.officeHours}</span>
               </div>
+              {SITE.sampleContactDetails && (
+                <span
+                  style={{
+                    fontSize: '0.6875rem',
+                    color: 'var(--olive-300, #a3aa9c)',
+                    fontStyle: 'italic',
+                    marginTop: 'var(--space-1)',
+                    lineHeight: '1.4',
+                  }}
+                >
+                  Sample contact details for the demo — to be replaced.
+                </span>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Meta */}
+        {/* Bottom Bar: Copyright */}
         <div
           style={{
             paddingTop: 'var(--space-6)',
@@ -229,16 +247,13 @@ export function Footer() {
           <div>
             &copy; {currentYear} {SITE.dealerName} · {SITE.city}, {SITE.country}
           </div>
-          <div>
-            <span>Plot Index Design System</span>
-          </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 1023px) {
+        @media (max-width: 767px) {
           .site-footer {
-            padding-bottom: calc(clamp(2.5rem, 4vw, 4rem) + 68px + env(safe-area-inset-bottom, 0px)) !important;
+            padding-bottom: calc(clamp(2rem, 5vw, 3.5rem) + 76px + env(safe-area-inset-bottom, 0px)) !important;
           }
         }
       `}</style>

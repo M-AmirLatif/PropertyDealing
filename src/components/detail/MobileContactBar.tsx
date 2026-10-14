@@ -89,9 +89,16 @@ export function MobileContactBar({ property }: MobileContactBarProps) {
       </div>
 
       <style>{`
-        @media (max-width: 1023px) {
+        @media (max-width: 767px) {
           .mobile-property-contact-bar {
             display: block !important;
+          }
+        }
+        @media (min-width: 768px) {
+          .mobile-property-contact-bar {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
           }
         }
       `}</style>

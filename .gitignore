@@ -29,6 +29,25 @@ dist-ssr
 # Agent skills
 .agents
 
-# Temporary lighthouse audit outputs
-scratch/lh-*.json
+# Temporary scratch outputs
+scratch/*.png
+scratch/*.jpg
+scratch/*.json
+scratch/*.mjs
+scratch/candidates/
+scratch/test-*.png
+scratch/test-*.ts
+scratch/verify-*.ts
+scratch/validate-build.ts
+scratch/check-*.ts
+scratch/compare.*
+scratch/dump-*.ts
+scratch/apply-properties.ts
+scratch/build-properties.ts
+scratch/orig-props.ts
+scratch/prompt_10.txt
+
+# Vercel
+.vercel
+
 

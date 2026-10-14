@@ -1,14 +1,15 @@
 import { Badge, type BadgeVariant } from '../ui/Badge';
-import { formatDate } from '../../lib/format';
+import { formatDate, formatShortDate } from '../../lib/format';
 import type { AvailabilityStatus } from '../../types';
 
 interface StatusBadgeProps {
   status: AvailabilityStatus;
   availableFrom?: string;
+  compact?: boolean;
   className?: string;
 }
 
-export function StatusBadge({ status, availableFrom, className = '' }: StatusBadgeProps) {
+export function StatusBadge({ status, availableFrom, compact = false, className = '' }: StatusBadgeProps) {
   let variant: BadgeVariant = 'neutral';
   let label = 'Status Pending';
 
@@ -19,7 +20,11 @@ export function StatusBadge({ status, availableFrom, className = '' }: StatusBad
       break;
     case 'available-soon':
       variant = 'reserved';
-      label = availableFrom ? `Available from ${formatDate(availableFrom)}` : 'Available Soon';
+      label = availableFrom
+        ? compact
+          ? `From ${formatShortDate(availableFrom)}`
+          : `Available from ${formatDate(availableFrom)}`
+        : 'Available Soon';
       break;
     case 'rented':
       variant = 'rented';

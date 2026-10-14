@@ -1,6 +1,6 @@
 # The Plot Index — Dealer Presenter Pack & Pitch Guide
 
-A strategic companion for demonstrating the Lahore Property & Rentals prototype to a prospective property dealer or rental agency principal.
+A strategic companion for demonstrating the Kasur Property & Rentals prototype to a prospective property dealer or rental agency principal (Irfan Umri).
 
 ---
 
@@ -8,7 +8,7 @@ A strategic companion for demonstrating the Lahore Property & Rentals prototype 
 
 Before you step into the dealer's office or hop on a call, take 2 minutes to tailor the placeholder fields in code so the demo looks and feels like their bespoke agency:
 
-### Step 1: Dealer Identity & Numbers
+### Step 1: Dealer Identity & Physical Location
 Open **[`src/config/site.ts`](file:///d:/PropertyDealing/src/config/site.ts)**:
 ```typescript
 export const SITE = {
@@ -16,7 +16,7 @@ export const SITE = {
   dealerName: "Irfan Umri",
   brandShort: "Irfan Umri",
   descriptor: "Property & Rentals",
-  tagline: "Rental Property Advisory in Lahore",
+  tagline: "Rental Property Advisory in Kasur",
 
   // 2. Direct contact number:
   phoneDisplay: "+92 301 6803398",
@@ -25,17 +25,28 @@ export const SITE = {
   // 3. WhatsApp Deep Linking (digits only):
   whatsappNumber: "923016803398",
 
-  // 4. Physical Office Location & Hours:
-  address: "[Office address — to be provided]",
-  city: "Lahore",
-  officeHours: "[Opening hours — to be provided]",
+  // 4. Physical Office Location & Hours (Sample values for demo):
+  address: {
+    line1: "Shop No. 12, Main Road",
+    locality: "Kasur",
+    province: "Punjab",
+    country: "Pakistan",
+    display: "Shop No. 12, Main Road, Kasur, Punjab, Pakistan",
+  },
+  city: "Kasur",
+  province: "Punjab",
+  country: "Pakistan",
+  email: "contact@example.com",
+  officeHours: "Mon–Sat 10:00 AM – 7:00 PM · Sunday closed",
+  sampleContactDetails: true, // Set to false once real client credentials are confirmed
 };
 ```
 
-### Step 2: Personalizing Listings
-Open **[`src/data/properties.ts`](file:///d:/PropertyDealing/src/data/properties.ts)**:
+### Step 2: Personalizing Listings & Localities
+Open **[`src/data/properties.ts`](file:///d:/PropertyDealing/src/data/properties.ts)** and **[`src/data/areas.ts`](file:///d:/PropertyDealing/src/data/areas.ts)**:
 - All 15 properties are indexed by unique reference numbers (`P-001` through `P-015`).
-- You can easily edit titles, rental prices in PKR (e.g. `rentPKR: 180000`), bedroom counts, and localities (DHA Phase 5, Gulberg III, Model Town, Johar Town, Cantt).
+- You can easily edit titles, realistic rental prices in PKR (e.g. `rentPKR: 45000` to `95000`), bedroom counts, and localities across the 9 real Kasur localities (Ideal Garden, Model Garden, Garden View, London City, Elite City, Shah Inayat Colony, Wapda Colony, Railway Road, Circle Road).
+- *Note:* While locality names are real places in Kasur, all property specifications, prices, and photos are fictional/illustrative demo content.
 - High-res local WebP images are stored in `public/images/properties/P-001/` to `P-015/`. To show one of the dealer's actual properties, drop their photos into a folder and point the `images` array to those local paths.
 
 ---
@@ -70,26 +81,26 @@ Upload the generated `dist/` directory directly to any static host:
 This pitch script is structured around the dealer's business pain points: tired WhatsApp forwards, repeated questions about rent and location, phantom aggregate listings, and lost leads.
 
 ### [Minute 0:00 – 1:00] The Hook: "Your Inventory Deserves Better Than WhatsApp Screen Grabs"
-> *"Irfan Sahab, right now when an executive or an overseas family asks you what rental houses or upper portions you have in DHA Phase 5 or Gulberg, what usually happens? Your team sends 35 separate photos on WhatsApp, 4 different voice notes, and then you have to explain the rent, gas connection status, and security deposit three times.*
+> *"Irfan Sahab, right now when an executive, doctor, or family asks you what rental houses or upper portions you have in Ideal Garden or Model Garden, what usually happens? Your team sends 35 separate photos on WhatsApp, 4 different voice notes, and then you have to explain the rent, gas connection status, and security deposit three times.*
 >
 > *Five minutes later, they get distracted or lose the photos in their chat gallery. Aggregate portals are even worse—they are littered with fake listings, outdated rates from two years ago, and unverified brokers.*
 >
-> *What we’ve built for you here is **The Plot Index**—a bespoke digital architectural register for your agency. It gives your business the prestige of an established Mayfair or Geneva advisory, tailored precisely for Lahore’s rental market."*
+> *What we’ve built for you here is **The Plot Index**—a bespoke digital architectural register for your agency. It gives your business the prestige of an established Mayfair or Geneva advisory, tailored precisely for Kasur’s rental market."*
 
 ### [Minute 1:00 – 2:15] Discovery & High-Fidelity Specs
 *(Open laptop or hand phone showing the Homepage `/#/`)*
 > *"Notice the aesthetic. Warm ivory, deep forest green, and brass accents—no cheap corporate blue or generic portal templates. Everything feels authoritative.*
 >
-> *When a client opens your site, they can filter immediately: 1 Kanal House in DHA, 10 Marla Upper Portion in Model Town, or an Executive Studio in Gulberg. Let’s tap into this DHA Phase 6 portion (`P-001`).*
+> *When a client opens your site, they can filter immediately: 1 Kanal House in Ideal Garden, 10 Marla Upper Portion in Model Garden, or an Executive Office on Railway Road. Let’s tap into this Ideal Garden residence (`P-001`).*
 >
-> *Look at how clean this presentation is: high-resolution photography with an architectural survey lightbox, exact covered area in Marlas/Kanals and square feet, clear rental price in Pakistani Rupees (`Rs. 145,000/month`), and crucial utility confirmations like dedicated 3-phase electricity meters, Sui gas connections, and separate water bores."*
+> *Look at how clean this presentation is: high-resolution photography with an architectural survey lightbox, exact covered area in Marlas/Kanals and square feet, clear rental price in Pakistani Rupees (`Rs. 95,000/month`), and crucial utility confirmations like dedicated electricity meters, Sui gas connections, and separate water supply."*
 
 ### [Minute 2:15 – 3:30] The Frictionless WhatsApp Conversion Engine
 *(Scroll down to the Contact Panel or tap the green WhatsApp action button)*
 > *"Here is the most important part for your bottom line: we don’t force your clients to fill out a long email form that sits in an inbox unread.*
 >
 > *When the client taps **'Inquire via WhatsApp'**, it immediately opens WhatsApp with a pre-formatted message:
-> `'Assalam-o-Alaikum, I am inquiring about Ref #P-001 (Architectural Upper Portion in DHA Phase 6, Rs. 145,000/month) listed on your register.'`*
+> `'Assalam-o-Alaikum, I am inquiring about Ref #001 (1 Kanal Contemporary House in Ideal Garden Housing Scheme, Rs. 95,000/month) listed on your register.'`*
 >
 > *Your phone rings with a qualified lead who already knows the location, the rent, and the property reference. No back-and-forth explaining the basics. You start the conversation at the viewing stage."*
 

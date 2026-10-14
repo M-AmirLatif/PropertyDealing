@@ -182,7 +182,7 @@ export function DetailHeader({ property }: DetailHeaderProps) {
       >
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
           <MapPin size={13} style={{ color: 'var(--copper-600)' }} />
-          <span>{property.area}, Lahore</span>
+          <span>{property.area}, Kasur</span>
         </span>
 
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>

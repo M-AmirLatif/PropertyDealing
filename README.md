@@ -1,8 +1,8 @@
-# The Plot Index — Lahore Property & Rental Advisory Demo Website
+# The Plot Index — Kasur Property & Rental Advisory Demo Website
 
-A high-performance, frontend-only demonstration website built for a premier property dealer / rental advisory practice in Lahore, Pakistan. Crafted to demonstrate how an editorial, architectural-grade web presence transforms rental discovery, elevates client inquiries, and establishes commercial trust.
+A high-performance, frontend-only demonstration website built for a premier property dealer / rental advisory practice in Kasur, Punjab, Pakistan (Dealer: Irfan Umri). Crafted to demonstrate how an editorial, architectural-grade web presence transforms rental discovery, elevates client inquiries, and establishes commercial trust.
 
-> **Demonstration Notice:** All property listings, pricing in PKR, photography, and agent placeholders on this site are illustrative demo records created strictly for presentation purposes. No real inquiries are submitted or processed over a network.
+> **Demonstration Notice:** Locality names are real places across Kasur, Punjab, while all property listings, pricing in PKR, photography, and agent placeholders on this site are illustrative/fictional demo records created strictly for presentation purposes. No real inquiries are submitted or processed over a network.
 
 ---
 
@@ -51,7 +51,7 @@ The production bundle compiles into `dist/` in ~7 seconds, generating optimized,
 
 ### Automated Test & Audit Suite
 ```bash
-# Run all validation, filter, and admin store tests (29 automated tests)
+# Run all validation, filter, and admin store tests
 npx tsx scratch/run-tests.ts
 
 # Run forbidden keyword and external network scanner
@@ -69,12 +69,12 @@ node scratch/audit-links.mjs
 ## Application Route Map
 
 All routes run via client-side hash routing:
-- `/#/` — **Homepage**: Signature Hero with rapid search drawer handoff, Curated Portions & Houses, Locality Index, Rental Process, and Dealer Commitments.
-- `/#/properties` — **Listing Explorer**: Instant multi-parameter filtering (Area, Property Type, Price Brackets, Bedroom Count, Furnished Status, Availability), multi-directional sorting, active filter chips, and mobile filter drawer.
+- `/#/` — **Homepage**: Signature Hero with rapid search drawer handoff, Curated Portions & Houses, Locality Index (Kasur), Rental Process, and Dealer Commitments.
+- `/#/properties` — **Listing Explorer**: Instant multi-parameter filtering across Kasur localities (Area, Property Type, Price Brackets, Bedroom Count, Furnished Status, Availability), multi-directional sorting, active filter chips, and mobile filter drawer.
 - `/#/properties/:slug` — **Property Detail**: High-resolution gallery with Radix lightbox, architectural specifications, utilities breakdown, interactive WhatsApp inquiry drawer, and related property recommendations.
-- `/#/about` — **Advisory Practice**: Professional service introduction, tenant guidance, owner property marketing representation, and territorial coverage.
-- `/#/contact` — **Direct Contact**: Office hours, phone lines, Lahore location details, and validated demo inquiry form with direct WhatsApp fallback.
-- `/#/list-your-property` — **Owner Onboarding**: Structured 3-step listing submission form for landlords seeking professional tenant placement.
+- `/#/about` — **Advisory Practice**: Professional service introduction, tenant guidance, owner property marketing representation, and territorial coverage across Kasur.
+- `/#/contact` — **Direct Contact**: Office hours, phone lines, Kasur location details, and validated demo inquiry form with direct WhatsApp fallback.
+- `/#/list-your-property` — **Owner Onboarding**: Structured listing submission form for landlords seeking professional tenant placement in Kasur.
 - `/#/saved` — **Saved Properties**: LocalStorage-backed shortlist with side-by-side spec comparison and batch WhatsApp share.
 - `/#/demo-admin` — **Simulated Dealer Admin**: Visual prototype demonstrating inventory status toggling (Available / Rented), featured listing toggles, lead log review, and listing creation.
 - `/#/styleguide` — **Design System**: Accessible in development mode (`npm run dev`) only; automatically excluded from production builds.
@@ -83,20 +83,35 @@ All routes run via client-side hash routing:
 
 ## Customizing Dealer & Property Data
 
-### 1. Business Credentials & Contact
+### 1. Business Credentials & Physical Address
 Configured in **[`src/config/site.ts`](file:///d:/PropertyDealing/src/config/site.ts)**:
 - `dealerName`: `"Irfan Umri"`
 - `brandShort`: `"Irfan Umri"`
 - `phoneDisplay`: `"+92 301 6803398"`
 - `phoneE164`: `"+923016803398"`
 - `whatsappNumber`: `"923016803398"`
-- `address`: Physical office address placeholder.
-- `officeHours`: Weekly operating hours placeholder.
+- `city`: `"Kasur"`, `province`: `"Punjab"`, `country`: `"Pakistan"`
+- `address`: Structure containing `{ line1, locality, province, country, display }` (sample address: `"Shop No. 12, Main Road, Kasur, Punjab, Pakistan"`).
+- `email`: `"contact@example.com"` (sample email).
+- `officeHours`: `"Mon–Sat 10:00 AM – 7:00 PM · Sunday closed"` (sample hours).
+- `sampleContactDetails`: Set to `true` to render a discreet "Sample contact details for the demo" notice. When confirmed physical details are provided, update the values and set `sampleContactDetails: false`.
 
-### 2. Property Dataset & Photography
-- **Property Records**: Add or edit records in **[`src/data/properties.ts`](file:///d:/PropertyDealing/src/data/properties.ts)**.
-- **Local Photography**: Place local property photography in `public/images/properties/<ID>/` (WebP or JPG format).
-- **Territories**: Configure Lahore areas, sectors, and neighborhoods in **[`src/data/areas.ts`](file:///d:/PropertyDealing/src/data/areas.ts)**.
+### 2. Kasur Localities & Coverage
+Configured in **[`src/data/areas.ts`](file:///d:/PropertyDealing/src/data/areas.ts)**:
+All 9 active Kasur localities with schematic map coordinates and descriptive blurbs:
+1. **Ideal Garden Housing Scheme** (`ideal-garden`)
+2. **Model Garden Housing Scheme** (`model-garden`)
+3. **Garden View Housing Scheme** (`garden-view`)
+4. **London City** (`london-city`)
+5. **Elite City Housing Scheme** (`elite-city`)
+6. **Shah Inayat Colony** (`shah-inayat-colony`)
+7. **Wapda Colony** (`wapda-colony`)
+8. **Railway Road** (`railway-road`)
+9. **Circle Road** (`circle-road`)
+
+### 3. Property Dataset & Photography
+- **Property Records**: Add or edit records in **[`src/data/properties.ts`](file:///d:/PropertyDealing/src/data/properties.ts)** (all 15 listings mapped to real Kasur localities with realistic monthly rents in PKR ranging from Rs. 20,000 to Rs. 120,000).
+- **Local Photography**: Place local property photography in `public/images/properties/<ID>/` (WebP format with small/cover variants).
 - **Categories**: Configure rental types in **[`src/data/categories.ts`](file:///d:/PropertyDealing/src/data/categories.ts)**.
 
 ---

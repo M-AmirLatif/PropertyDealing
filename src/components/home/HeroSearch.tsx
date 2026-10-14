@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
-import { LAHORE_AREAS } from '../../data/areas';
+import { KASUR_AREAS } from '../../data/areas';
 import { Button } from '../ui/Button';
 
 export function HeroSearch() {
@@ -21,16 +21,16 @@ export function HeroSearch() {
       params.set('type', type);
     }
 
-    if (budget === 'under-50k') {
+    if (budget === 'under-25k') {
+      params.set('maxRent', '25000');
+    } else if (budget === '25k-50k') {
+      params.set('minRent', '25000');
       params.set('maxRent', '50000');
     } else if (budget === '50k-100k') {
       params.set('minRent', '50000');
       params.set('maxRent', '100000');
-    } else if (budget === '100k-200k') {
+    } else if (budget === '100k-plus') {
       params.set('minRent', '100000');
-      params.set('maxRent', '200000');
-    } else if (budget === '200k-plus') {
-      params.set('minRent', '200000');
     }
 
     const queryString = params.toString();
@@ -97,11 +97,12 @@ export function HeroSearch() {
             className="label"
             style={{ color: 'var(--text-muted)', fontSize: '0.625rem' }}
           >
-            Lahore Rentals
+            Kasur Rentals
           </span>
         </div>
 
         <div
+          className="hero-search-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
@@ -120,7 +121,7 @@ export function HeroSearch() {
                 color: 'var(--text-body)',
               }}
             >
-              Locality / Area
+              Area
             </label>
             <select
               id="hero-search-area"
@@ -128,8 +129,8 @@ export function HeroSearch() {
               onChange={(e) => setArea(e.target.value)}
               style={selectStyle}
             >
-              <option value="">Any area in Lahore</option>
-              {LAHORE_AREAS.map((a) => (
+              <option value="">Any area in Kasur</option>
+              {KASUR_AREAS.map((a) => (
                 <option key={a.slug} value={a.slug}>
                   {a.name}
                 </option>
@@ -148,7 +149,7 @@ export function HeroSearch() {
                 color: 'var(--text-body)',
               }}
             >
-              Property Typology
+              Property type
             </label>
             <select
               id="hero-search-type"
@@ -184,10 +185,10 @@ export function HeroSearch() {
               style={selectStyle}
             >
               <option value="any">Any budget range</option>
-              <option value="under-50k">Up to Rs. 50,000</option>
-              <option value="50k-100k">Rs. 50,000 – 100,000</option>
-              <option value="100k-200k">Rs. 100,000 – 200,000</option>
-              <option value="200k-plus">Rs. 200,000 and above</option>
+              <option value="under-25k">Up to Rs. 25,000</option>
+              <option value="25k-50k">Rs. 25,000–50,000</option>
+              <option value="50k-100k">Rs. 50,000–100,000</option>
+              <option value="100k-plus">Rs. 100,000+</option>
             </select>
           </div>
 
@@ -205,6 +206,14 @@ export function HeroSearch() {
           </div>
         </div>
       </form>
+
+      <style>{`
+        @media (max-width: 639px) {
+          .hero-search-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -27,12 +27,6 @@ export function SpecRow({ property, className = '', isMuted = false }: SpecRowPr
         textTransform: 'uppercase',
       }}
     >
-      {/* Covered Area */}
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-        <Maximize2 size={13} style={{ color: 'var(--copper-600)', flexShrink: 0 }} />
-        <span>{formatArea(property.coveredArea)}</span>
-      </div>
-
       {/* Bedrooms (non-commercial only) */}
       {!isCommercial && property.bedrooms !== null && (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
@@ -49,25 +43,31 @@ export function SpecRow({ property, className = '', isMuted = false }: SpecRowPr
         </div>
       )}
 
+      {/* Covered Area */}
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+        <Maximize2 size={13} style={{ color: 'var(--copper-600)', flexShrink: 0 }} />
+        <span>{formatArea(property.coveredArea)}</span>
+      </div>
+
       {/* Commercial Type Identifier */}
       {isCommercial && (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
           <Building size={13} style={{ color: 'var(--copper-600)', flexShrink: 0 }} />
-          <span>Commercial Use</span>
+          <span>Commercial</span>
         </div>
       )}
 
-      {/* Plot Size for houses / portions if available */}
+      {/* Plot Size (compact form e.g. "5 Marla") */}
       {property.plotSize && (
         <span
           style={{
             color: 'var(--text-muted)',
             fontSize: '0.6875rem',
             borderLeft: '1px solid var(--border)',
-            paddingLeft: '10px',
+            paddingLeft: '8px',
           }}
         >
-          {property.plotSize} Plot
+          {property.plotSize}
         </span>
       )}
     </div>

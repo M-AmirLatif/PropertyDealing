@@ -117,7 +117,7 @@ export function FilterDrawer({
                   margin: 0,
                 }}
               >
-                Filter Register
+                Filter Properties
               </Dialog.Title>
               {draftActiveCount > 0 && (
                 <span
@@ -159,7 +159,7 @@ export function FilterDrawer({
           </div>
 
           <p id="filter-drawer-desc" style={{ display: 'none' }}>
-            Adjust criteria to filter rental properties in Lahore
+            Adjust criteria to filter rental properties in Kasur
           </p>
 
           {/* Scrollable Body */}

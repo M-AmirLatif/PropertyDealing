@@ -1,7 +1,7 @@
 import { X } from 'lucide-react';
 import type { PropertyType } from '../../types';
 import type { Filters } from '../../lib/filters';
-import { LAHORE_AREAS } from '../../data/areas';
+import { KASUR_AREAS } from '../../data/areas';
 import { formatRent } from '../../lib/format';
 
 interface ActiveFiltersProps {
@@ -41,7 +41,7 @@ export function ActiveFilters({
 
   // Area
   if (filters.area) {
-    const areaObj = LAHORE_AREAS.find((a) => a.slug === filters.area);
+    const areaObj = KASUR_AREAS.find((a) => a.slug === filters.area);
     const areaName = areaObj ? areaObj.name : filters.area;
     chips.push({
       id: 'area',

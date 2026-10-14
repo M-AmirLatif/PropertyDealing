@@ -18,8 +18,8 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
       style={{
         position: 'relative',
-        paddingTop: 'clamp(2rem, 5vw, 4.5rem)',
-        paddingBottom: 'clamp(3rem, 6vw, 6rem)',
+        paddingTop: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+        paddingBottom: 'clamp(2rem, 4vw, 3.5rem)',
         backgroundColor: 'var(--bg)',
         overflow: 'hidden',
       }}
@@ -27,11 +27,11 @@ export function HeroSection() {
       <Container>
         {/* Mobile top image banner (<768px) */}
         <div className="hero-mobile-image-band" style={{ display: 'none', marginBottom: 'var(--space-4)' }}>
-          <ArchMask aspectRatio="21/9" type="pointed">
+          <ArchMask aspectRatio="16/9" style={{ borderRadius: '20px 20px 0 0' }}>
             <SurveyImage
               src="/images/site/hero.webp"
               srcSmall="/images/site/hero-sm.webp"
-              alt="Contemporary residential architecture in Lahore"
+              alt="Contemporary residential architecture"
               priority
               position="50% 40%"
             />
@@ -141,23 +141,30 @@ export function HeroSection() {
               gridColumn: 'span 5',
               position: 'relative',
               width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
             }}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                width: '100%',
+                maxWidth: 'min(100%, calc(min(70svh, 640px) * 0.8))',
+              }}
             >
               <SurveyFrame
                 caption={hero.surveyCaption}
                 aspectRatio="4/5"
                 markColor="brass"
+                transparentContent
               >
-                <ArchMask aspectRatio="4/5" type="pointed">
+                <ArchMask aspectRatio="4/5">
                   <SurveyImage
                     src="/images/site/hero.webp"
                     srcSmall="/images/site/hero-sm.webp"
-                    alt="Contemporary residential architecture in Lahore"
+                    alt="Contemporary residential architecture"
                     priority
                     position="50% 45%"
                   />
@@ -174,7 +181,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.35 }}
           style={{
-            marginTop: 'clamp(2rem, 4vw, 3.5rem)',
+            marginTop: 'clamp(1.5rem, 3vw, 2.5rem)',
           }}
         >
           <HeroSearch />

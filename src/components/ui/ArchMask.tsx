@@ -10,23 +10,16 @@ interface ArchMaskProps {
 
 export function ArchMask({
   children,
-  aspectRatio = '3/4',
-  type = 'rounded',
+  aspectRatio = '4/5',
   className = '',
   style,
 }: ArchMaskProps) {
-  // Rounded arch uses pure CSS border-radius (999px 999px 0 0)
-  // Pointed arch uses an SVG path or pointed curve
-  const maskStyle: CSSProperties =
-    type === 'rounded'
-      ? {
-          borderRadius: '999px 999px 2px 2px',
-          overflow: 'hidden',
-        }
-      : {
-          borderRadius: '50% 50% 2px 2px / 75% 75% 2px 2px',
-          overflow: 'hidden',
-        };
+  // Clean architectural arch: rectangle whose top is an exact semicircle with radius = half width.
+  // Using 9999px for top corners creates an exact semicircle top while leaving bottom corners square (0 0).
+  const maskStyle: CSSProperties = {
+    borderRadius: '9999px 9999px 0 0',
+    overflow: 'hidden',
+  };
 
   return (
     <div
@@ -34,9 +27,9 @@ export function ArchMask({
       style={{
         position: 'relative',
         width: '100%',
+        height: '100%',
         aspectRatio,
-        backgroundColor: 'var(--ivory-200)',
-        border: '1px solid var(--border)',
+        backgroundColor: 'transparent',
         ...maskStyle,
         ...style,
       }}

@@ -9,6 +9,7 @@ interface SurveyFrameProps {
   markColor?: SurveyMarkColor;
   className?: string;
   style?: CSSProperties;
+  transparentContent?: boolean;
 }
 
 export function SurveyFrame({
@@ -18,6 +19,7 @@ export function SurveyFrame({
   markColor = 'brass',
   className = '',
   style,
+  transparentContent = false,
 }: SurveyFrameProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -30,6 +32,7 @@ export function SurveyFrame({
 
   // Hover displacement: default is 0, on hover marks tighten inward by 4px
   const shift = isHovered ? 4 : 0;
+  const hasAspectRatio = Boolean(aspectRatio && aspectRatio !== 'none' && aspectRatio !== 'auto');
 
   return (
     <div
@@ -43,6 +46,7 @@ export function SurveyFrame({
         flexDirection: 'column',
         boxSizing: 'border-box',
         width: '100%',
+        height: hasAspectRatio ? undefined : '100%',
         ...style,
       }}
     >
@@ -51,6 +55,9 @@ export function SurveyFrame({
         style={{
           position: 'relative',
           width: '100%',
+          flex: hasAspectRatio ? undefined : '1 1 auto',
+          display: hasAspectRatio ? undefined : 'flex',
+          flexDirection: hasAspectRatio ? undefined : 'column',
         }}
       >
         {/* Top-Left Bracket */}
@@ -146,10 +153,12 @@ export function SurveyFrame({
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio,
+            height: hasAspectRatio ? undefined : '100%',
+            flex: hasAspectRatio ? undefined : '1 1 auto',
+            aspectRatio: hasAspectRatio ? aspectRatio : undefined,
             overflow: 'hidden',
-            backgroundColor: 'var(--ivory-200)',
-            border: '1px solid var(--border)',
+            backgroundColor: transparentContent ? 'transparent' : 'var(--ivory-200)',
+            border: transparentContent ? 'none' : '1px solid var(--border)',
           }}
         >
           {children}
@@ -162,6 +171,7 @@ export function SurveyFrame({
           className="survey-frame-caption"
           style={{
             marginTop: 'var(--space-2)',
+            flexShrink: 0,
             display: 'block',
             fontFamily: 'var(--font-mono)',
             fontSize: 'var(--fs-label)',

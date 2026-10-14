@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, type FormEvent, type FocusEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { MessageSquare, Phone, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { MessageSquare, Phone, Mail, MapPin, Clock, ArrowRight, UserCheck } from 'lucide-react';
 import { Container } from '../components/ui/Container';
 import { Section } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
@@ -12,7 +12,7 @@ import {
   DemoConfirmation,
   type FormErrorItem,
 } from '../components/forms';
-import { LAHORE_AREAS } from '../data/areas';
+import { KASUR_AREAS } from '../data/areas';
 import { SITE } from '../config/site';
 import { useWhatsApp } from '../context/WhatsAppContext';
 import { useDealerPhone } from '../hooks/useDealerPhone';
@@ -54,7 +54,7 @@ export default function Contact() {
   const phoneInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    document.title = `Contact Advisory — ${SITE.dealerName}`;
+    document.title = `Contact — ${SITE.dealerName}`;
   }, []);
 
   const validateField = (field: keyof ContactFormData, value: string): string | null => {
@@ -135,9 +135,9 @@ export default function Contact() {
   };
 
   const areaOptions = [
-    { value: '', label: 'Any sector / Not sure yet' },
-    ...LAHORE_AREAS.map((a) => ({ value: a.name, label: a.name })),
-    { value: 'Other Lahore Locality', label: 'Other locality in Lahore' },
+    { value: '', label: 'Any locality in Kasur / Not sure yet' },
+    ...KASUR_AREAS.map((a) => ({ value: a.name, label: a.name })),
+    { value: 'Other Kasur Locality', label: 'Other locality in Kasur' },
   ];
 
   const lookingForOptions = [
@@ -150,23 +150,29 @@ export default function Contact() {
 
   const budgetOptions = [
     { value: 'Any monthly budget', label: 'Any budget range' },
-    { value: 'Up to Rs. 50,000/month', label: 'Up to Rs. 50,000' },
+    { value: 'Up to Rs. 25,000/month', label: 'Up to Rs. 25,000' },
+    { value: 'Rs. 25,000 – 50,000/month', label: 'Rs. 25,000 – 50,000' },
     { value: 'Rs. 50,000 – 100,000/month', label: 'Rs. 50,000 – 100,000' },
-    { value: 'Rs. 100,000 – 200,000/month', label: 'Rs. 100,000 – 200,000' },
-    { value: 'Rs. 200,000+/month', label: 'Rs. 200,000 and above' },
+    { value: 'Rs. 100,000+/month', label: 'Rs. 100,000 and above' },
   ];
 
   const whatsappMessage = buildContactInquiryMessage({
     name: formData.name,
     phone: formData.phone,
     lookingFor: formData.lookingFor,
-    area: formData.area || 'Any sector in Lahore',
+    area: formData.area || 'Any locality in Kasur',
     budget: formData.budget,
     message: formData.message,
   });
 
   return (
-    <Section variant="default">
+    <Section
+      variant="default"
+      style={{
+        paddingTop: 'clamp(2rem, 3.5vw, 2.75rem)',
+        paddingBottom: 'clamp(2.5rem, 5vw, 4rem)',
+      }}
+    >
       <Container>
         {/* Page Header */}
         <div style={{ marginBottom: 'clamp(2rem, 5vw, 3.5rem)', maxWidth: '720px' }}>
@@ -200,7 +206,7 @@ export default function Contact() {
               margin: 0,
             }}
           >
-            Have a question about an indexed property or need assistance finding a rental in Lahore? Connect directly on WhatsApp or submit your requirements below.
+            Have a question about a listed property or need assistance finding a rental in Kasur? Connect directly on WhatsApp or submit your requirements below.
           </p>
         </div>
 
@@ -226,14 +232,51 @@ export default function Contact() {
                   marginBottom: 'var(--space-3)',
                 }}
               >
-                DIRECT CONTACT CHANNELS
+                DIRECT CONTACT
               </span>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                {/* Dealer Name Card */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '14px',
+                    padding: '14px 18px',
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 'var(--radius-default)',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--ivory-200)',
+                      color: 'var(--charcoal-900)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <UserCheck size={18} />
+                  </div>
+                  <div>
+                    <span className="label" style={{ fontSize: '0.625rem', color: 'var(--text-muted)', display: 'block' }}>
+                      PROPERTY DEALER
+                    </span>
+                    <strong style={{ fontSize: '1rem', color: 'var(--text-heading)' }}>
+                      {SITE.dealerName}
+                    </strong>
+                  </div>
+                </div>
+
                 {/* WhatsApp Action Row */}
                 <button
                   type="button"
-                  onClick={() => openWhatsApp('Hello Irfan, I would like to consult regarding rental properties in Lahore.')}
+                  onClick={() => openWhatsApp('Hello Irfan, I would like to consult regarding rental properties in Kasur.')}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -310,7 +353,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <strong style={{ display: 'block', fontSize: '0.9375rem', color: 'var(--text-heading)' }}>
-                        Telephone Advisory
+                        Direct Phone
                       </strong>
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
                         {phoneDisplay}
@@ -390,7 +433,7 @@ export default function Contact() {
                       OFFICE LOCATION
                     </span>
                     <span style={{ fontSize: '0.875rem', color: 'var(--text-heading)', display: 'block' }}>
-                      {SITE.address}
+                      {SITE.address.display}
                     </span>
                   </div>
                 </div>
@@ -431,6 +474,20 @@ export default function Contact() {
                     </span>
                   </div>
                 </div>
+
+                {SITE.sampleContactDetails && (
+                  <p
+                    style={{
+                      fontSize: '0.75rem',
+                      color: 'var(--text-muted)',
+                      fontStyle: 'italic',
+                      margin: 'var(--space-2) 0 0 0',
+                      lineHeight: '1.4',
+                    }}
+                  >
+                    Sample contact details for the demo — to be replaced.
+                  </p>
+                )}
               </div>
             </div>
 
@@ -447,7 +504,7 @@ export default function Contact() {
                 LOCALITY COVERAGE
               </span>
               <p style={{ fontSize: '0.875rem', margin: '0 0 var(--space-2) 0', color: 'var(--text-heading)' }}>
-                Active in DHA Phases 5 &amp; 6, Bahria Town, Johar Town, Gulberg, Model Town, Wapda Town, Valencia, and Askari 11.
+                Active across Ideal Garden, Model Garden, Garden View, London City, Elite City, Shah Inayat Colony, Wapda Colony, Railway Road, and Circle Road.
               </p>
               <Link
                 to="/about#service-area"
@@ -501,7 +558,7 @@ export default function Contact() {
                       marginBottom: '2px',
                     }}
                   >
-                    ONLINE INQUIRY REGISTER
+                    ONLINE INQUIRY
                   </span>
                   <h2
                     style={{
@@ -565,7 +622,7 @@ export default function Contact() {
                   <SelectField
                     id="contact-area"
                     name="area"
-                    label="Preferred Lahore locality"
+                    label="Preferred Kasur locality"
                     options={areaOptions}
                     value={formData.area}
                     onChange={(e) => handleChange('area', e.target.value)}
@@ -586,7 +643,7 @@ export default function Contact() {
                     id="contact-message"
                     name="message"
                     label="Additional requirements (optional)"
-                    placeholder="Mention preferred possession date, floor level, parking needs, etc."
+                    placeholder="e.g. Move-in date, floor level, parking needs..."
                     rows={3}
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}

@@ -1,4 +1,4 @@
-import { type ChangeEvent } from 'react';
+import { type ChangeEvent, type CSSProperties } from 'react';
 import { ArrowUpDown } from 'lucide-react';
 import type { SortOption } from '../../lib/filters';
 
@@ -6,12 +6,16 @@ interface SortSelectProps {
   value: SortOption;
   onChange: (sort: SortOption) => void;
   id?: string;
+  hideLabel?: boolean;
+  style?: CSSProperties;
 }
 
 export function SortSelect({
   value,
   onChange,
   id = 'sort-select',
+  hideLabel = false,
+  style,
 }: SortSelectProps) {
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onChange(e.target.value as SortOption);
@@ -23,30 +27,34 @@ export function SortSelect({
         display: 'inline-flex',
         alignItems: 'center',
         gap: '8px',
+        ...style,
       }}
     >
-      <label
-        htmlFor={id}
-        className="label"
-        style={{
-          color: 'var(--text-muted)',
-          fontSize: '0.6875rem',
-          whiteSpace: 'nowrap',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '4px',
-        }}
-      >
-        <ArrowUpDown size={12} aria-hidden="true" />
-        <span>SORT:</span>
-      </label>
+      {!hideLabel && (
+        <label
+          htmlFor={id}
+          className="label"
+          style={{
+            color: 'var(--text-muted)',
+            fontSize: '0.6875rem',
+            whiteSpace: 'nowrap',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          <ArrowUpDown size={12} aria-hidden="true" />
+          <span>SORT:</span>
+        </label>
+      )}
 
       <select
         id={id}
         value={value}
         onChange={handleChange}
         style={{
-          height: '38px',
+          width: '100%',
+          height: '42px',
           padding: '0 10px',
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',

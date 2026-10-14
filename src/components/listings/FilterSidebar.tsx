@@ -27,25 +27,25 @@ export function FilterSidebar({
         width: '300px',
         flexShrink: 0,
         position: 'sticky',
-        top: '88px',
-        maxHeight: 'calc(100vh - 108px)',
-        overflowY: 'auto',
+        top: '84px',
+        display: 'flex',
+        flexDirection: 'column',
         backgroundColor: 'var(--surface)',
         border: '1px solid var(--border)',
         borderRadius: 'var(--radius-default)',
-        padding: 'var(--space-4)',
         boxShadow: '0 2px 8px rgba(24, 26, 23, 0.04)',
       }}
     >
-      {/* Sidebar Header */}
+      {/* Pinned Header: Always visible at top */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingBottom: 'var(--space-3)',
-          marginBottom: 'var(--space-4)',
+          padding: '10px 14px',
           borderBottom: '1px solid var(--border)',
+          backgroundColor: 'var(--surface)',
+          flexShrink: 0,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -102,13 +102,20 @@ export function FilterSidebar({
         </button>
       </div>
 
-      {/* Filter Controls Form */}
-      <FilterFields
-        filters={filters}
-        onFilterChange={onFilterChange}
-        properties={properties}
-        idPrefix="sidebar"
-      />
+      {/* Content Form */}
+      <div
+        style={{
+          padding: '12px 14px 16px 14px',
+        }}
+      >
+        {/* Filter Controls Form */}
+        <FilterFields
+          filters={filters}
+          onFilterChange={onFilterChange}
+          properties={properties}
+          idPrefix="sidebar"
+        />
+      </div>
     </aside>
   );
 }

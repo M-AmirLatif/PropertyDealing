@@ -36,7 +36,7 @@ export default function Properties() {
 
   // Set document title
   useEffect(() => {
-    document.title = `Properties for rent in Lahore — ${SITE.dealerName}`;
+    document.title = `Properties for rent in Kasur — ${SITE.dealerName}`;
   }, []);
 
   // Save current search string to sessionStorage for "Back to results" in detail page
@@ -44,21 +44,6 @@ export default function Properties() {
     const qStr = searchParams.toString();
     sessionStorage.setItem('last_properties_search', qStr ? `?${qStr}` : '');
   }, [searchParams]);
-
-  // Restore scroll position on back navigation
-  useEffect(() => {
-    const savedScroll = sessionStorage.getItem('properties_scroll_y');
-    if (savedScroll) {
-      window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' as ScrollBehavior });
-    }
-    const handleScroll = () => {
-      sessionStorage.setItem('properties_scroll_y', String(window.scrollY));
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   // Filter and sort properties
   const filteredAndSortedProperties = useMemo(() => {
@@ -99,7 +84,13 @@ export default function Properties() {
   return (
     <div className="properties-page">
       {/* 1. Page Header Section */}
-      <Section variant="default" style={{ paddingBottom: 'var(--space-4)' }}>
+      <Section
+        variant="default"
+        style={{
+          paddingTop: 'clamp(2rem, 3.5vw, 2.75rem)',
+          paddingBottom: 'clamp(3rem, 6vw, 5rem)',
+        }}
+      >
         <Container>
           <div
             style={{
@@ -125,7 +116,7 @@ export default function Properties() {
                   color: 'var(--copper-600)',
                 }}
               >
-                PROPERTY INDEX · LAHORE
+                PROPERTY INDEX · KASUR
               </span>
 
               {/* Accessible Live Result Counter */}
@@ -170,7 +161,7 @@ export default function Properties() {
                 maxWidth: '65ch',
               }}
             >
-              Architectural survey registers of houses, apartments, portions, and commercial spaces across Lahore.
+              Browse houses, apartments, portions and commercial spaces across Kasur.
             </p>
           </div>
 
@@ -179,20 +170,21 @@ export default function Properties() {
             className="properties-mobile-controls"
             style={{
               display: 'none',
+              flexDirection: 'column',
+              gap: 'var(--space-2)',
               paddingTop: 'var(--space-3)',
               paddingBottom: 'var(--space-3)',
-              gap: 'var(--space-2)',
-              alignItems: 'center',
+              width: '100%',
             }}
           >
-            {/* Quick Keyword Search */}
-            <div style={{ position: 'relative', flex: 1 }}>
+            {/* Quick Keyword Search (Full width on mobile) */}
+            <div style={{ position: 'relative', width: '100%' }}>
               <Search
                 size={15}
                 aria-hidden="true"
                 style={{
                   position: 'absolute',
-                  left: '10px',
+                  left: '12px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   color: 'var(--text-muted)',
@@ -203,13 +195,13 @@ export default function Properties() {
                 type="text"
                 value={currentFilters.q}
                 onChange={(e) => handleFilterChange({ q: e.target.value })}
-                placeholder="Search..."
+                placeholder="Search area or keyword..."
                 aria-label="Quick search area or keyword"
                 style={{
                   width: '100%',
                   height: '42px',
-                  paddingLeft: '32px',
-                  paddingRight: currentFilters.q ? '32px' : '8px',
+                  paddingLeft: '34px',
+                  paddingRight: currentFilters.q ? '34px' : '12px',
                   backgroundColor: 'var(--surface)',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius-default)',
@@ -232,7 +224,7 @@ export default function Properties() {
                     border: 'none',
                     color: 'var(--text-muted)',
                     cursor: 'pointer',
-                    padding: '4px',
+                    padding: '6px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -243,52 +235,63 @@ export default function Properties() {
               )}
             </div>
 
-            {/* Mobile Filters Trigger Button */}
-            <button
-              type="button"
-              onClick={() => setIsMobileDrawerOpen(true)}
-              aria-label={`Open filter drawer. ${activeCount} active filters.`}
+            {/* Sub-row: Filters Trigger + Sort Select side-by-side */}
+            <div
               style={{
-                height: '42px',
-                padding: '0 14px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                backgroundColor: activeCount > 0 ? 'var(--ivory-200)' : 'var(--surface)',
-                border: activeCount > 0 ? '1px solid var(--border-strong)' : '1px solid var(--border)',
-                borderRadius: 'var(--radius-default)',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.8125rem',
-                color: 'var(--text-heading)',
-                cursor: 'pointer',
-                flexShrink: 0,
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 'var(--space-2)',
+                width: '100%',
               }}
             >
-              <SlidersHorizontal size={14} aria-hidden="true" />
-              <span>Filters</span>
-              {activeCount > 0 && (
-                <span
-                  style={{
-                    backgroundColor: 'var(--copper-600)',
-                    color: '#fff',
-                    borderRadius: '10px',
-                    padding: '1px 6px',
-                    fontSize: '0.6875rem',
-                    fontWeight: 600,
-                  }}
-                >
-                  {activeCount}
-                </span>
-              )}
-            </button>
+              <button
+                type="button"
+                onClick={() => setIsMobileDrawerOpen(true)}
+                aria-label={`Open filter drawer. ${activeCount} active filters.`}
+                style={{
+                  height: '42px',
+                  padding: '0 12px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  backgroundColor: activeCount > 0 ? 'var(--ivory-200)' : 'var(--surface)',
+                  border: activeCount > 0 ? '1px solid var(--border-strong)' : '1px solid var(--border)',
+                  borderRadius: 'var(--radius-default)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8125rem',
+                  color: 'var(--text-heading)',
+                  cursor: 'pointer',
+                  width: '100%',
+                }}
+              >
+                <SlidersHorizontal size={14} aria-hidden="true" />
+                <span>Filters</span>
+                {activeCount > 0 && (
+                  <span
+                    style={{
+                      backgroundColor: 'var(--copper-600)',
+                      color: '#fff',
+                      borderRadius: '10px',
+                      padding: '1px 6px',
+                      fontSize: '0.6875rem',
+                      fontWeight: 600,
+                    }}
+                  >
+                    {activeCount}
+                  </span>
+                )}
+              </button>
 
-            {/* Mobile Sort Dropdown */}
-            <div style={{ flexShrink: 0 }}>
-              <SortSelect
-                id="mobile-sort-select"
-                value={currentFilters.sort}
-                onChange={handleSortChange}
-              />
+              <div style={{ width: '100%' }}>
+                <SortSelect
+                  id="mobile-sort-select"
+                  value={currentFilters.sort}
+                  onChange={handleSortChange}
+                  hideLabel
+                  style={{ width: '100%' }}
+                />
+              </div>
             </div>
           </div>
 

@@ -25,35 +25,40 @@ export function Badge({
     switch (variant) {
       case 'available':
         return {
-          backgroundColor: 'rgba(47, 107, 63, 0.1)',
-          color: '#1D5A30',
-          borderColor: 'rgba(47, 107, 63, 0.28)',
+          backgroundColor: 'var(--ivory-50, #FBF8F2)',
+          color: '#134E2A',
+          borderColor: 'rgba(19, 78, 42, 0.35)',
         };
       case 'rented':
+        return {
+          backgroundColor: 'var(--forest-900, #1F2A22)',
+          color: 'var(--ivory-50, #FBF8F2)',
+          borderColor: 'var(--forest-900, #1F2A22)',
+        };
       case 'reserved':
         return {
-          backgroundColor: 'rgba(138, 106, 31, 0.1)',
-          color: '#705310',
-          borderColor: 'rgba(138, 106, 31, 0.28)',
+          backgroundColor: 'var(--ivory-50, #FBF8F2)',
+          color: '#8A3B14',
+          borderColor: 'rgba(138, 59, 20, 0.35)',
         };
       case 'featured':
         return {
-          backgroundColor: 'rgba(176, 138, 78, 0.14)',
-          color: '#7A5B22',
-          borderColor: 'rgba(176, 138, 78, 0.4)',
+          backgroundColor: 'var(--ivory-50, #FBF8F2)',
+          color: '#785108',
+          borderColor: 'rgba(120, 81, 8, 0.35)',
         };
       case 'furnished':
         return {
-          backgroundColor: 'rgba(43, 46, 41, 0.08)',
-          color: 'var(--charcoal-700)',
+          backgroundColor: 'var(--ivory-50, #FBF8F2)',
+          color: 'var(--charcoal-900, #181A17)',
           borderColor: 'var(--border-strong)',
         };
       case 'neutral':
       default:
         return {
-          backgroundColor: 'rgba(217, 208, 190, 0.35)',
-          color: 'var(--charcoal-700)',
-          borderColor: 'var(--border)',
+          backgroundColor: 'var(--ivory-50, #FBF8F2)',
+          color: 'var(--charcoal-900, #181A17)',
+          borderColor: 'var(--border-strong)',
         };
     }
   };
@@ -64,16 +69,17 @@ export function Badge({
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        padding: '3px 9px',
+        padding: '3px 8px',
         borderRadius: 'var(--radius-pill)',
         border: '1px solid',
         fontFamily: 'var(--font-mono)',
         fontSize: '0.6875rem',
-        fontWeight: 500,
-        letterSpacing: '0.08em',
+        fontWeight: 600,
+        letterSpacing: '0.06em',
         textTransform: 'uppercase',
-        lineHeight: 1.3,
+        lineHeight: 1.25,
         whiteSpace: 'nowrap',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.08)',
         ...getVariantStyles(),
         ...style,
       }}

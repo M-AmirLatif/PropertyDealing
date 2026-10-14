@@ -1,10 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Dialog from '@radix-ui/react-dialog';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, MessageSquare, Bookmark } from 'lucide-react';
 import { useWhatsApp } from '../../context/WhatsAppContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { SITE, DEMO_DISCLAIMER } from '../../config/site';
+import { handleAnchorClick } from '../../lib/scroll';
 
 interface MobileMenuProps {
   open: boolean;
@@ -22,11 +23,15 @@ const NAV_LINKS = [
 
 export function MobileMenu({ open, onOpenChange }: MobileMenuProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const { openWhatsApp } = useWhatsApp();
   const { savedIds } = useFavorites();
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (path: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     onOpenChange(false);
+    if (path.includes('#locations')) {
+      handleAnchorClick(e, path, location.pathname, navigate);
+    }
   };
 
   return (
@@ -152,7 +157,7 @@ export function MobileMenu({ open, onOpenChange }: MobileMenuProps) {
                       >
                         <Link
                           to={item.path}
-                          onClick={handleLinkClick}
+                          onClick={(e) => handleLinkClick(item.path, e)}
                           style={{
                             display: 'flex',
                             alignItems: 'baseline',
@@ -198,7 +203,7 @@ export function MobileMenu({ open, onOpenChange }: MobileMenuProps) {
                   >
                     <Link
                       to="/saved"
-                      onClick={handleLinkClick}
+                      onClick={() => onOpenChange(false)}
                       style={{
                         display: 'flex',
                         alignItems: 'center',

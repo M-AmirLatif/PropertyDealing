@@ -8,22 +8,21 @@ import { SITE } from '../config/site';
 
 export const ABOUT_CONTENT = {
   header: {
-    label: 'ABOUT THE ADVISORY',
-    title: `Independent real estate rental guidance across Lahore`,
-    intro: `Representing residential and commercial properties with documented details, transparent pricing, and direct communication.`,
+    label: 'ABOUT US',
+    title: `Rental property guidance and listings across Kasur`,
+    intro: `Residential and commercial rental properties with clear details, honest pricing, and direct communication.`,
   },
 
   dealerIntro: {
-    heading: 'Advisory practice',
-    // Client placeholder:
-    paragraph1: `${SITE.dealerName} operates as a focused rental property consultancy based in Lahore, Pakistan. The practice assists families, executives, overseas Pakistanis, and corporate tenants in identifying suitable rental accommodation while supporting property owners with rigorous tenancy coordination.`,
-    paragraph2: `Unlike aggregate portals filled with outdated or phantom listings, our register prioritizes accurate architectural measurements, current availability status, and direct WhatsApp consultations with the broker managing the inventory.`,
+    heading: 'Our services',
+    paragraph1: `${SITE.dealerName} is a property dealer based in Kasur, Punjab, helping tenants and property owners with rental properties. Contact him on WhatsApp or by phone.`,
+    paragraph2: `Unlike aggregate portals filled with outdated or duplicate listings, our listings prioritize accurate measurements, current availability status, and direct WhatsApp communication with the dealer.`,
   },
 
   whatWeHelpWith: {
-    heading: 'What the dealer helps with',
+    heading: 'How we can help',
     forTenants: {
-      title: 'For Prospective Tenants',
+      title: 'For Tenants',
       items: [
         {
           num: '01',
@@ -58,7 +57,7 @@ export const ABOUT_CONTENT = {
         {
           num: '02',
           title: 'High-clarity listing presentation',
-          desc: 'Documenting covered areas, structural highlights, and fittings through clean architectural registers.',
+          desc: 'Documenting covered areas, structural highlights, and fittings with clear specifications.',
         },
         {
           num: '03',
@@ -75,15 +74,15 @@ export const ABOUT_CONTENT = {
   },
 
   serviceArea: {
-    heading: 'Territorial coverage',
-    subtitle: 'Focused on established master-planned developments and central commercial corridors in Lahore.',
+    heading: 'Areas we cover',
+    subtitle: 'Focused on established residential and commercial areas across Kasur.',
     caption: 'Schematic only — not a map and not to scale.',
-    footnote: 'Sample sectors for the Lahore demonstration — expandable to additional housing schemes and other cities.',
+    footnote: 'Sample areas for the Kasur demonstration — expandable to additional housing schemes and other cities.',
   },
 
   cta: {
     title: 'Ready to discuss your rental search or list a property?',
-    desc: 'Speak directly with the consultant on WhatsApp without automated delays.',
+    desc: 'Speak directly on WhatsApp without automated delays.',
     buttonText: 'Message on WhatsApp',
   },
 };

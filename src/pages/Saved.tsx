@@ -40,7 +40,13 @@ export default function Saved() {
   };
 
   return (
-    <Section variant="default">
+    <Section
+      variant="default"
+      style={{
+        paddingTop: 'clamp(2rem, 3.5vw, 2.75rem)',
+        paddingBottom: 'clamp(2.5rem, 5vw, 4rem)',
+      }}
+    >
       <Container>
         {/* Page Header */}
         <div
@@ -64,7 +70,7 @@ export default function Saved() {
                 marginBottom: 'var(--space-2)',
               }}
             >
-              PERSONAL SELECTION REGISTER
+              SAVED PROPERTIES
             </span>
             <h1
               style={{
@@ -87,7 +93,7 @@ export default function Saved() {
             >
               {count === 0
                 ? 'You have not shortlisted any properties yet.'
-                : `${count} ${count === 1 ? 'property' : 'properties'} saved to this browser's register.`}
+                : `${count} ${count === 1 ? 'property' : 'properties'} saved to your shortlist.`}
             </p>
           </div>
 
@@ -159,7 +165,7 @@ export default function Saved() {
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--border)',
               borderRadius: 'var(--radius-default)',
-              padding: 'clamp(2.5rem, 6vw, 4.5rem)',
+              padding: 'clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem)',
               textAlign: 'center',
               maxWidth: '640px',
               margin: '0 auto',
@@ -202,13 +208,15 @@ export default function Saved() {
                 marginBottom: 'var(--space-5)',
               }}
             >
-              Browse the Lahore rentals catalog and click the bookmark icon on any property to save it to your personal shortlist.
+              Browse the Kasur rentals catalog and click the bookmark icon on any property to save it to your personal shortlist.
             </p>
 
-            <Button to="/properties" variant="primary" size="md">
-              <Search size={15} style={{ marginRight: '6px' }} />
-              Browse property register
-            </Button>
+            <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+              <Button to="/properties" variant="primary" size="md">
+                <Search size={15} style={{ marginRight: '6px' }} />
+                Browse all properties
+              </Button>
+            </div>
           </div>
         ) : (
           <div

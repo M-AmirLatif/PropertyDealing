@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import { useState, useEffect, type CSSProperties } from 'react';
 import { ImageOff } from 'lucide-react';
 
 interface SurveyImageProps {
@@ -12,6 +12,9 @@ interface SurveyImageProps {
   style?: CSSProperties;
 }
 
+// Global session cache of already-loaded image URLs to render instantly without shimmer
+const loadedImageUrls = new Set<string>();
+
 export function SurveyImage({
   src,
   srcSmall,
@@ -22,10 +25,49 @@ export function SurveyImage({
   className = '',
   style,
 }: SurveyImageProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [triedFallback, setTriedFallback] = useState(false);
+  const currentSrc = triedFallback ? src : (srcSmall || src);
+
+  const [isLoaded, setIsLoaded] = useState(() => priority || loadedImageUrls.has(currentSrc));
   const [hasError, setHasError] = useState(false);
 
-  const srcSet = srcSmall
+  // Sync state whenever image path changes
+  useEffect(() => {
+    if (priority || loadedImageUrls.has(currentSrc)) {
+      setIsLoaded(true);
+    } else {
+      setIsLoaded(false);
+    }
+    setHasError(false);
+    setTriedFallback(false);
+  }, [currentSrc, priority]);
+
+  // Synchronously check if the image is already cached/complete in the browser
+  const imgRef = (node: HTMLImageElement | null) => {
+    if (node && node.complete && node.naturalWidth > 0) {
+      loadedImageUrls.add(currentSrc);
+      if (!isLoaded) {
+        setIsLoaded(true);
+      }
+    }
+  };
+
+  const handleLoad = () => {
+    loadedImageUrls.add(currentSrc);
+    setIsLoaded(true);
+  };
+
+  // If first attempt fails (e.g. srcset candidate error), retry once with direct main src
+  const handleError = () => {
+    if (!triedFallback && srcSmall) {
+      setTriedFallback(true);
+      setIsLoaded(false);
+    } else {
+      setHasError(true);
+    }
+  };
+
+  const srcSet = !triedFallback && srcSmall
     ? `${srcSmall} 800w, ${src} 1600w`
     : undefined;
 
@@ -48,7 +90,7 @@ export function SurveyImage({
       }}
     >
       {/* Warm Shimmer Skeleton before loaded */}
-      {!isLoaded && !hasError && (
+      {!isLoaded && !hasError && !priority && (
         <div
           className="survey-image-skeleton"
           style={{
@@ -89,22 +131,26 @@ export function SurveyImage({
         </div>
       ) : (
         <img
-          src={src}
+          ref={imgRef}
+          key={currentSrc + (triedFallback ? '-fallback' : '-primary')}
+          src={currentSrc}
           srcSet={srcSet}
           sizes={sizes}
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : 'auto'}
-          decoding="async"
-          onLoad={() => setIsLoaded(true)}
-          onError={() => setHasError(true)}
+          decoding={priority ? 'sync' : 'async'}
+          onLoad={handleLoad}
+          onError={handleError}
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
             objectPosition: position,
             opacity: isLoaded ? 1 : 0,
-            transition: 'opacity var(--duration-normal) var(--ease-out), transform 350ms var(--ease-out)',
+            transition: isLoaded && loadedImageUrls.has(currentSrc)
+              ? 'transform 350ms var(--ease-out)'
+              : 'opacity 120ms ease-out, transform 350ms var(--ease-out)',
             display: 'block',
           }}
         />

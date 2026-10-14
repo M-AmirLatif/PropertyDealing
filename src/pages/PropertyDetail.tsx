@@ -58,7 +58,7 @@ export default function PropertyDetail() {
         variant="default"
         style={{
           paddingTop: 'var(--space-4)',
-          paddingBottom: 'clamp(80px, 12vw, 110px)', // clearance for mobile contact bar
+          paddingBottom: 'var(--space-8)',
         }}
       >
         <Container>
@@ -268,7 +268,7 @@ export default function PropertyDetail() {
               }}
             >
               <ArrowLeft size={14} />
-              <span>Back to property register</span>
+              <span>Back to properties</span>
             </Link>
           </div>
         </Container>
@@ -278,7 +278,7 @@ export default function PropertyDetail() {
       <MobileContactBar property={property} />
 
       <style>{`
-        @media (max-width: 1023px) {
+        @media (max-width: 767px) {
           .property-detail-grid {
             grid-template-columns: 1fr !important;
           }

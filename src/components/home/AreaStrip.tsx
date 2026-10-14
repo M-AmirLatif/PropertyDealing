@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { LAHORE_AREAS } from '../../data/areas';
+import { KASUR_AREAS } from '../../data/areas';
 import { Container } from '../ui/Container';
 
 export function AreaStrip() {
@@ -70,7 +70,7 @@ export function AreaStrip() {
               WebkitOverflowScrolling: 'touch',
             }}
           >
-            {LAHORE_AREAS.map((area, index) => (
+            {KASUR_AREAS.map((area, index) => (
               <span
                 key={area.slug}
                 style={{
@@ -95,7 +95,7 @@ export function AreaStrip() {
                 >
                   {area.name}
                 </Link>
-                {index < LAHORE_AREAS.length - 1 && (
+                {index < KASUR_AREAS.length - 1 && (
                   <span
                     aria-hidden="true"
                     style={{

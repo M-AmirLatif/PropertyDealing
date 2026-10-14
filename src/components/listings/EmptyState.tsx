@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { RotateCcw, ArrowRight } from 'lucide-react';
 import type { Property } from '../../types';
-import { LAHORE_AREAS, getAreaPropertyCount } from '../../data/areas';
+import { KASUR_AREAS, getAreaPropertyCount } from '../../data/areas';
 import { Button } from '../ui/Button';
 
 interface EmptyStateProps {
@@ -11,7 +11,7 @@ interface EmptyStateProps {
 
 export function EmptyState({ onClearAll, properties }: EmptyStateProps) {
   // Compute the 3 areas with the highest count of listings
-  const topAreas = [...LAHORE_AREAS]
+  const topAreas = [...KASUR_AREAS]
     .map((area) => ({
       ...area,
       count: getAreaPropertyCount(area.slug, properties),
@@ -64,7 +64,7 @@ export function EmptyState({ onClearAll, properties }: EmptyStateProps) {
           margin: '0 auto var(--space-5) auto',
         }}
       >
-        Try removing specific bedroom requirements, adjusting your budget range, or exploring other sectors in Lahore.
+        Try removing specific bedroom requirements, adjusting your budget range, or exploring other localities in Kasur.
       </p>
 
       <div

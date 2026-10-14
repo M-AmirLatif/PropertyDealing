@@ -15,7 +15,7 @@ export function useDealerPhone() {
       window.location.href = `tel:${SITE.phoneE164}`;
     } else {
       const message = customContext ||
-        `Hello Irfan, I am attempting to contact ${SITE.dealerName} regarding rental properties in Lahore.`;
+        `Hello Irfan, I am attempting to contact ${SITE.dealerName} regarding rental properties in Kasur.`;
       openWhatsApp(message);
     }
   }, [openWhatsApp]);

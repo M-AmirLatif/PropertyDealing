@@ -158,32 +158,32 @@
     "propertyId": "P-005",
     "filename": "exterior",
     "role": "cover",
-    "unsplashId": "photo-1518780664697-55e3ad937233",
-    "photographer": "Scott Webb",
-    "unsplashUrl": "https://unsplash.com/photos/55e3ad937233",
-    "alt": "Warm 5 Marla family house exterior in Johar Town Block R",
-    "position": "50% 35%"
+    "unsplashId": "photo-1756706718604-ef4af3970e33",
+    "photographer": "POOJAN THANEKAR",
+    "unsplashUrl": "https://unsplash.com/photos/modern-concrete-and-wood-house-with-trees-F-slnkFvcag",
+    "alt": "Modern 5 Marla double-storey house exterior with gate and paved street in Johar Town",
+    "position": "50% 50%"
   },
   {
     "id": "p005-2",
     "propertyId": "P-005",
     "filename": "lounge",
     "role": "living",
-    "unsplashId": "photo-1560185007-cde436f6a4d0",
-    "photographer": "Sidekix Media",
-    "unsplashUrl": "https://unsplash.com/photos/cde436f6a4d0",
-    "alt": "Central family TV lounge and informal sitting area",
-    "position": "50% 45%"
+    "unsplashId": "photo-1759580974069-cab494998fa3",
+    "photographer": "Imran Hossain",
+    "unsplashUrl": "https://unsplash.com/photos/modern-living-room-with-marble-accents-and-comfortable-seating-FAxzZGeCjhM",
+    "alt": "Central family TV lounge with ceiling fan, marble wall and dining area",
+    "position": "50% 50%"
   },
   {
     "id": "p005-3",
     "propertyId": "P-005",
     "filename": "bedroom",
     "role": "bedroom",
-    "unsplashId": "photo-1505691938895-1758d7feb511",
-    "photographer": "Christopher Jolly",
-    "unsplashUrl": "https://unsplash.com/photos/1758d7feb511",
-    "alt": "Ground floor bedroom with high ventilation windows",
+    "unsplashId": "photo-1785232273548-4beae5334903",
+    "photographer": "Home Makers Interior",
+    "unsplashUrl": "https://unsplash.com/photos/modern-bedroom-with-bed-wardrobe-window-and-stylish-lighting-oKCZ-yw2Bn0",
+    "alt": "Comfortable ground-floor bedroom with sliding wardrobe and ceiling fan",
     "position": "50% 50%"
   },
   {
@@ -422,11 +422,11 @@
     "propertyId": "P-012",
     "filename": "facade",
     "role": "cover",
-    "unsplashId": "photo-1567496898669-ee935f5f647a",
-    "photographer": "Simone Hutsch",
-    "unsplashUrl": "https://unsplash.com/photos/ee935f5f647a",
-    "alt": "5 Marla upper portion balcony and facade in Wapda Town Lahore",
-    "position": "50% 40%"
+    "unsplashId": "photo-1696220659653-f11d376a7dd5",
+    "photographer": "Budi Puspa Wijaya",
+    "unsplashUrl": "https://unsplash.com/photos/a-couple-of-chairs-sitting-on-top-of-a-balcony-3Xw3fAIVFQQ",
+    "alt": "5 Marla upper portion private sunlit balcony with seating in Wapda Town",
+    "position": "50% 50%"
   },
   {
     "id": "p012-2",
@@ -521,11 +521,11 @@
     "propertyId": "P-015",
     "filename": "building",
     "role": "cover",
-    "unsplashId": "photo-1486406146926-c627a92ad1ab",
-    "photographer": "Sean Pollock",
-    "unsplashUrl": "https://unsplash.com/photos/c627a92ad1ab",
-    "alt": "Modern commercial plaza glass elevation in DHA Phase 6 Lahore",
-    "position": "50% 40%"
+    "unsplashId": "photo-1715593949273-09009558300a",
+    "photographer": "Musemind UX Agency",
+    "unsplashUrl": "https://unsplash.com/photos/a-room-with-a-desk-and-a-chair-srTPWPbK0Dg",
+    "alt": "Corporate executive office suite with director desk and conference screen in DHA Phase 6",
+    "position": "50% 50%"
   },
   {
     "id": "p015-2",

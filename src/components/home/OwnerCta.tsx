@@ -46,7 +46,7 @@ export function OwnerCta() {
               transition={{ duration: 0.4 }}
             >
               <SurveyFrame
-                caption="OWNER INVENTORY REGISTER · LAHORE"
+                caption="PROPERTY RENTALS · KASUR"
                 aspectRatio="16/11"
                 markColor="muted"
               >
@@ -60,7 +60,7 @@ export function OwnerCta() {
                   <SurveyImage
                     src="/images/site/owner-cta.webp"
                     srcSmall="/images/site/owner-cta-sm.webp"
-                    alt="Calm residential interior in Lahore"
+                    alt="Calm residential interior"
                     position="50% 50%"
                   />
                 </div>

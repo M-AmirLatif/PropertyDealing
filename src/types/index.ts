@@ -1,5 +1,5 @@
 /**
- * Type Definitions for The Plot Index — Lahore Rental Real Estate Demo
+ * Type Definitions for The Plot Index — Kasur Rental Real Estate Demo
  */
 
 export type PropertyType = 'house' | 'apartment' | 'portion' | 'commercial';
@@ -15,8 +15,8 @@ export interface PropertyImage {
 }
 
 export interface NearbyPlace {
-  label: string; // Generic category only: "Park", "Daily market", "School", "Main boulevard"
-  note: string;  // Indicative note: "short drive (indicative)", "within sector"
+  label: string; // Generic category only: "Park", "Daily market", "School", "Main road"
+  note: string;  // Indicative note: "short drive (indicative)", "within locality"
 }
 
 export interface CoveredArea {
@@ -30,14 +30,14 @@ export interface PropertyContact {
 
 export interface Property {
   id: string;          // e.g. "P-001"
-  slug: string;        // e.g. "dha-phase-5-modern-1-kanal-house"
+  slug: string;        // e.g. "ideal-garden-1-kanal-house"
   refNo: number;       // e.g. 7
   title: string;
   type: PropertyType;
-  city: 'Lahore';
-  area: string;        // display, e.g. "DHA Phase 5"
-  areaSlug: string;    // e.g. "dha-phase-5"
-  rentPKR: number;     // e.g. 325000
+  city: 'Kasur';
+  area: string;        // display, e.g. "Ideal Garden Housing Scheme"
+  areaSlug: string;    // e.g. "ideal-garden"
+  rentPKR: number;     // e.g. 95000
   bedrooms: number | null;
   bathrooms: number | null;
   coveredArea: CoveredArea;

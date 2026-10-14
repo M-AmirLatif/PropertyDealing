@@ -80,18 +80,73 @@ const portions = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, types: ['po
 assert(portions.length > 0 && portions.every(p => p.type === 'portion'), `Type filter works: found ${portions.length} portions`);
 
 // 3. Filter by area
-const dhaProps = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, q: 'dha' });
-assert(dhaProps.length > 0 && dhaProps.every(p => p.areaSlug.includes('dha') || p.area.toLowerCase().includes('dha')), `Area search works: found ${dhaProps.length} DHA listings`);
+const gardenProps = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, q: 'Garden' });
+assert(gardenProps.length > 0 && gardenProps.every(p => p.areaSlug.includes('garden') || p.area.toLowerCase().includes('garden') || p.title.toLowerCase().includes('garden')), `Area search works: found ${gardenProps.length} Garden listings`);
 
 // 4. Price range filter
-const budgetProps = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, maxRent: 100000 });
-assert(budgetProps.length > 0 && budgetProps.every(p => p.rentPKR <= 100000), `Max rent filter works: all ${budgetProps.length} listings <= 100k PKR`);
+const budgetProps = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, maxRent: 50000 });
+assert(budgetProps.length > 0 && budgetProps.every(p => p.rentPKR <= 50000), `Max rent filter works: all ${budgetProps.length} listings <= 50k PKR`);
 
 // 5. Keyword search
-const gulbergSearch = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, q: 'Gulberg' });
-assert(gulbergSearch.length > 0, `Keyword search finds ${gulbergSearch.length} listings mentioning 'Gulberg'`);
+const londonSearch = applyFilters(DEMO_PROPERTIES, { ...DEFAULT_FILTERS, q: 'London' });
+assert(londonSearch.length > 0, `Keyword search finds ${londonSearch.length} listings mentioning 'London'`);
 
-// 6. Sorting
+// 6. Verify Kasur area distribution across the 15 properties
+import { KASUR_AREAS } from '../src/data/areas';
+const areaCounts = KASUR_AREAS.map(a => ({
+  slug: a.slug,
+  count: DEMO_PROPERTIES.filter(p => p.areaSlug === a.slug).length,
+}));
+assert(areaCounts.reduce((sum, a) => sum + a.count, 0) === 15, 'All 15 properties are distributed across Kasur areas');
+assert(areaCounts.find(a => a.slug === 'ideal-garden')?.count === 2, 'Ideal Garden has 2 properties');
+assert(areaCounts.find(a => a.slug === 'model-garden')?.count === 2, 'Model Garden has 2 properties');
+assert(areaCounts.find(a => a.slug === 'garden-view')?.count === 2, 'Garden View has 2 properties');
+assert(areaCounts.find(a => a.slug === 'london-city')?.count === 2, 'London City has 2 properties');
+assert(areaCounts.find(a => a.slug === 'elite-city')?.count === 2, 'Elite City has 2 properties');
+assert(areaCounts.find(a => a.slug === 'shah-inayat-colony')?.count === 1, 'Shah Inayat Colony has 1 property');
+assert(areaCounts.find(a => a.slug === 'wapda-colony')?.count === 1, 'Wapda Colony has 1 property');
+assert(areaCounts.find(a => a.slug === 'railway-road')?.count === 2, 'Railway Road has 2 properties');
+assert(areaCounts.find(a => a.slug === 'circle-road')?.count === 1, 'Circle Road has 1 property');
+
+// 7. Restored Property Types & Specs Verification
+const houses = DEMO_PROPERTIES.filter(p => p.type === 'house');
+const portionsList = DEMO_PROPERTIES.filter(p => p.type === 'portion');
+const apartments = DEMO_PROPERTIES.filter(p => p.type === 'apartment');
+const commercials = DEMO_PROPERTIES.filter(p => p.type === 'commercial');
+assert(houses.length === 5, `Restored house count is 5 (got ${houses.length})`);
+assert(portionsList.length === 3, `Restored portion count is 3 (got ${portionsList.length})`);
+assert(apartments.length === 4, `Restored apartment count is 4 (got ${apartments.length})`);
+assert(commercials.length === 3, `Restored commercial count is 3 (got ${commercials.length})`);
+
+// 8. Furnished status
+const furnishedProps = DEMO_PROPERTIES.filter(p => p.furnished);
+assert(furnishedProps.length === 2, `Restored furnished count is 2 (got ${furnishedProps.length})`);
+assert(furnishedProps.some(p => p.id === 'P-007') && furnishedProps.some(p => p.id === 'P-013'), 'Furnished properties are P-007 and P-013');
+
+// 9. Availability status & featured counts
+const rentedProps = DEMO_PROPERTIES.filter(p => p.status === 'rented');
+const soonProps = DEMO_PROPERTIES.filter(p => p.status === 'available-soon');
+const availProps = DEMO_PROPERTIES.filter(p => p.status === 'available');
+assert(rentedProps.length === 1 && rentedProps[0].id === 'P-011', `Exactly 1 rented property: P-011 (got ${rentedProps.map(p => p.id).join(', ')})`);
+assert(soonProps.length === 2 && soonProps.some(p => p.id === 'P-006') && soonProps.some(p => p.id === 'P-015'), `Exactly 2 available-soon properties: P-006, P-015`);
+assert(availProps.length === 12, `Exactly 12 available properties (got ${availProps.length})`);
+
+const featuredProps = DEMO_PROPERTIES.filter(p => p.featured);
+assert(featuredProps.length === 5, `Featured properties count is 5 (got ${featuredProps.length})`);
+
+// 10. All referenced property images exist on disk
+import fs from 'fs';
+let missingImages = 0;
+DEMO_PROPERTIES.forEach(p => {
+  p.images.forEach(img => {
+    if (!fs.existsSync('public' + img.src) || !fs.existsSync('public' + img.srcSmall)) {
+      missingImages++;
+    }
+  });
+});
+assert(missingImages === 0, `All property images and thumbnails exist on disk (missing: ${missingImages})`);
+
+// 11. Sorting
 const sortedRentAsc = sortProperties(DEMO_PROPERTIES, 'rent-asc');
 let isAscending = true;
 for (let i = 1; i < sortedRentAsc.length; i++) {

@@ -217,7 +217,7 @@ export function ContactPanel({ property }: ContactPanelProps) {
             marginBottom: '4px',
           }}
         >
-          LISTED BY REGISTER CONSULTANT
+          PROPERTY DEALER
         </span>
         <strong
           style={{
@@ -243,12 +243,17 @@ export function ContactPanel({ property }: ContactPanelProps) {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <MapPin size={11} />
-            <span>{SITE.address}</span>
+            <span>{SITE.address.display}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <Clock size={11} />
             <span>{SITE.officeHours}</span>
           </div>
+          {SITE.sampleContactDetails && (
+            <span style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '4px' }}>
+              Sample contact details for the demo — to be replaced.
+            </span>
+          )}
         </div>
       </div>
     </aside>

@@ -51,7 +51,7 @@ const PALETTE: ColorSwatch[] = [
 export default function StyleGuide() {
   const { openWhatsApp } = useWhatsApp();
   const { properties } = usePropertiesStore();
-  const [selectedChips, setSelectedChips] = useState<string[]>(['1-kanal', 'dha']);
+  const [selectedChips, setSelectedChips] = useState<string[]>(['1-kanal', 'ideal-garden']);
 
   const toggleChip = (id: string) => {
     setSelectedChips((prev) =>
@@ -72,7 +72,7 @@ export default function StyleGuide() {
               Plot Index Design System
             </h1>
             <p style={{ color: 'var(--text-muted)', fontSize: 'var(--fs-body)', maxWidth: '65ch', marginTop: 'var(--space-2)' }}>
-              Contemporary architectural real-estate editorial design system for Lahore property
+              Contemporary architectural real-estate editorial design system for Kasur property
               dealers. Monospaced survey reference marks, Fraunces serif headlines, and hairline
               brass brackets.
             </p>
@@ -206,7 +206,7 @@ export default function StyleGuide() {
                 Heading 2 — Fraunces (clamp 1.9rem → 3rem)
               </span>
               <h2 style={{ margin: 'var(--space-2) 0 0' }}>
-                DHA Phase 5 · Sector K Register
+                Ideal Garden · Block A Listings
               </h2>
             </div>
 
@@ -224,7 +224,7 @@ export default function StyleGuide() {
                 Body Copy — Hanken Grotesk (1.0625rem / 1.6 line-height)
               </span>
               <p style={{ margin: 'var(--space-2) 0 0', color: 'var(--text-body)' }}>
-                Located in a quiet tree-lined boulevard in DHA Lahore, this property features
+                Located in a quiet tree-lined boulevard in Kasur, this property features
                 separate electricity and gas meters, solid teak wood fittings, imported tiled
                 washrooms, and dedicated covered car porch parking.
               </p>
@@ -232,17 +232,17 @@ export default function StyleGuide() {
 
             <div className="hairline-top" style={{ paddingTop: 'var(--space-4)' }}>
               <span className="label" style={{ color: 'var(--text-muted)' }}>
-                Mono Metadata &amp; Survey Reference — DM Mono (0.72rem / 0.12em tracking)
+                Mono Metadata &amp; Reference — DM Mono (0.72rem / 0.12em tracking)
               </span>
               <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', marginTop: 'var(--space-2)' }}>
                 <span className="label" style={{ color: 'var(--copper-600)' }}>
-                  REF 042 · 1 KANAL · RS. 165,000/MONTH
+                  REF 042 · 1 KANAL · RS. 95,000/MONTH
                 </span>
                 <span className="label" style={{ color: 'var(--forest-900)' }}>
-                  GULBERG III · COMMERCIAL PLOT
+                  RAILWAY ROAD · COMMERCIAL PLOT
                 </span>
                 <span className="label" style={{ color: 'var(--brass-500)' }}>
-                  SURVEY REGISTER LAHORE · 2026
+                  THE PLOT INDEX · KASUR
                 </span>
               </div>
             </div>
@@ -366,18 +366,18 @@ export default function StyleGuide() {
                   10 Marla
                 </Chip>
                 <Chip
-                  selected={selectedChips.includes('dha')}
-                  onClick={() => toggleChip('dha')}
+                  selected={selectedChips.includes('ideal-garden')}
+                  onClick={() => toggleChip('ideal-garden')}
                   count={14}
                 >
-                  DHA Lahore
+                  Ideal Garden
                 </Chip>
                 <Chip
-                  selected={selectedChips.includes('bahria')}
-                  onClick={() => toggleChip('bahria')}
+                  selected={selectedChips.includes('model-garden')}
+                  onClick={() => toggleChip('model-garden')}
                   count={6}
                 >
-                  Bahria Town
+                  Model Garden
                 </Chip>
               </div>
             </div>
@@ -420,7 +420,7 @@ export default function StyleGuide() {
             {/* Light Frame */}
             <div>
               <SurveyFrame
-                caption="REF 007 · DHA PHASE 5 · 1 KANAL"
+                caption="REF 007 · IDEAL GARDEN · 1 KANAL"
                 aspectRatio="16/10"
                 markColor="brass"
               >
@@ -447,7 +447,7 @@ export default function StyleGuide() {
             {/* Secondary Frame */}
             <div>
               <SurveyFrame
-                caption="REF 014 · GULBERG III · 2 KANAL RESIDENCE"
+                caption="REF 014 · MODEL GARDEN · 10 MARLA RESIDENCE"
                 aspectRatio="16/10"
                 markColor="brass"
               >
@@ -480,7 +480,7 @@ export default function StyleGuide() {
           <SectionHeader
             label="06 · Architectural Framing"
             title="ArchMask & Index Numerals"
-            description="Clips imagery to a distinctive rounded or pointed arch reflecting Lahore's heritage brick masonry and Mughal pointed arch profiles."
+            description="Clips imagery to a distinctive rounded or pointed arch reflecting regional heritage brick masonry and traditional pointed arch profiles."
           />
 
           <div

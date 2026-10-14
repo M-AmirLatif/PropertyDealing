@@ -65,7 +65,7 @@ export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>
             fontSize: '0.9375rem',
             color: 'var(--text-heading)',
             outlineOffset: '2px',
-            resize: 'vertical',
+            resize: 'none',
             minHeight: '100px',
             lineHeight: 1.5,
             transition: 'border-color var(--duration-fast)',

@@ -8,10 +8,7 @@ interface ResultsGridProps {
   sort: SortOption;
 }
 
-export function ResultsGrid({ properties, sort }: ResultsGridProps) {
-  // First item is wider "lead" card spanning both columns ONLY when results >= 3 and sort is newest
-  const hasLeadCard = properties.length >= 3 && sort === 'newest';
-
+export function ResultsGrid({ properties }: ResultsGridProps) {
   return (
     <div>
       <ul
@@ -24,37 +21,35 @@ export function ResultsGrid({ properties, sort }: ResultsGridProps) {
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 'var(--space-4)',
+          alignItems: 'start',
         }}
       >
         <AnimatePresence mode="popLayout">
-          {properties.map((property, index) => {
-            const isLead = index === 0 && hasLeadCard;
-            return (
-              <motion.li
-                key={property.id}
-                layout
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{
-                  duration: 0.22,
-                  delay: Math.min(index * 0.03, 0.12),
-                  ease: 'easeOut',
-                }}
-                className={isLead ? 'results-grid-lead-item' : ''}
-                style={{
-                  listStyle: 'none',
-                  gridColumn: isLead ? 'span 2' : 'auto',
-                }}
-              >
-                <PropertyCard
-                  property={property}
-                  variant={isLead ? 'lead' : 'compact'}
-                  priority={index < 2}
-                />
-              </motion.li>
-            );
-          })}
+          {properties.map((property, index) => (
+            <motion.li
+              key={property.id}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{
+                duration: 0.22,
+                delay: Math.min(index * 0.03, 0.12),
+                ease: 'easeOut',
+              }}
+              style={{
+                listStyle: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <PropertyCard
+                property={property}
+                variant="compact"
+                priority={index < 4}
+              />
+            </motion.li>
+          ))}
         </AnimatePresence>
       </ul>
 

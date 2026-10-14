@@ -14,6 +14,11 @@ import './styles/utilities.css';
 
 import App from './App';
 
+/* Disable automatic browser scroll restoration so SPA route transitions cleanly start at (0, 0) */
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

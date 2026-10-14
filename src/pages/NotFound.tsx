@@ -7,7 +7,7 @@ import { SITE } from '../config/site';
 
 export default function NotFound() {
   useEffect(() => {
-    document.title = `404 Record Not Found | ${SITE.dealerName}`;
+    document.title = `404 Page Not Found | ${SITE.dealerName}`;
   }, []);
 
   return (
@@ -22,7 +22,7 @@ export default function NotFound() {
               marginBottom: 'var(--space-2)',
             }}
           >
-            INDEX RECORD NOT FOUND
+            PAGE NOT FOUND
           </span>
 
           <div
@@ -48,7 +48,7 @@ export default function NotFound() {
               margin: '0 0 var(--space-3) 0',
             }}
           >
-            Unsurveyed Coordinate
+            Page Not Found
           </h1>
 
           <p
@@ -60,7 +60,7 @@ export default function NotFound() {
               margin: '0 0 var(--space-6) 0',
             }}
           >
-            The page or register entry you requested does not exist or has been relocated to another sector.
+            The page or property listing you requested does not exist or has been moved.
           </p>
 
           <div
@@ -73,7 +73,7 @@ export default function NotFound() {
           >
             <Button to="/properties" variant="primary" size="md">
               <Search size={15} style={{ marginRight: '6px' }} />
-              Browse properties register
+              Browse all properties
             </Button>
             <Button to="/" variant="secondary" size="md">
               <Home size={15} style={{ marginRight: '6px' }} />

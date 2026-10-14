@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import type { Property } from '../../types';
-import { formatRent, formatRelativeListed, padRef, formatArea } from '../../lib/format';
+import { formatRent, formatRelativeListed, padRef } from '../../lib/format';
 import { SurveyFrame } from '../ui/SurveyFrame';
 import { Badge } from '../ui/Badge';
 import { SurveyImage } from './SurveyImage';
@@ -36,7 +36,7 @@ export function PropertyCard({
     position: '50% 50%',
   };
 
-  const surveyCaption = `REF ${padRef(property.refNo)} · ${property.area.toUpperCase()} · ${formatArea(property.coveredArea).toUpperCase()}`;
+  const surveyCaption = `REF ${padRef(property.refNo)} · ${property.area.toUpperCase()}`;
 
   // Image aspect ratios based on variant
   const aspectRatio = variant === 'lead' ? '16/10' : variant === 'row' ? '4/3' : '16/10';
@@ -54,6 +54,7 @@ export function PropertyCard({
         overflow: 'hidden',
         display: 'flex',
         flexDirection: variant === 'row' ? 'row' : 'column',
+        height: variant === 'lead' ? '100%' : 'auto',
         transition: 'border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out)',
         boxShadow: isCardHovered
           ? '0 12px 28px -10px rgba(24, 26, 23, 0.12)'
@@ -82,14 +83,23 @@ export function PropertyCard({
         style={{
           position: 'relative',
           width: variant === 'row' ? 'clamp(240px, 35%, 340px)' : '100%',
-          flexShrink: 0,
+          flexShrink: variant === 'lead' ? 1 : 0,
+          flexGrow: variant === 'lead' ? 1 : 0,
+          display: variant === 'lead' ? 'flex' : undefined,
+          flexDirection: variant === 'lead' ? 'column' : undefined,
+          minHeight: variant === 'lead' ? '360px' : undefined,
         }}
       >
         <SurveyFrame
           caption={variant !== 'row' ? surveyCaption : undefined}
-          aspectRatio={aspectRatio}
+          aspectRatio={variant === 'lead' ? 'none' : aspectRatio}
           markColor={isCardHovered ? 'brass' : 'muted'}
-          style={{ padding: '8px' }}
+          style={{
+            padding: '8px',
+            flex: variant === 'lead' ? '1 1 auto' : undefined,
+            display: variant === 'lead' ? 'flex' : undefined,
+            flexDirection: variant === 'lead' ? 'column' : undefined,
+          }}
         >
           <div
             className="property-card-img-zoom"
@@ -97,6 +107,7 @@ export function PropertyCard({
               position: 'relative',
               width: '100%',
               height: '100%',
+              flex: variant === 'lead' ? '1 1 auto' : undefined,
               overflow: 'hidden',
               filter: isRented ? 'grayscale(30%)' : 'none',
               transition: 'transform 400ms var(--ease-out), filter 400ms var(--ease-out)',
@@ -124,7 +135,7 @@ export function PropertyCard({
               pointerEvents: 'none',
             }}
           >
-            <StatusBadge status={property.status} availableFrom={property.availableFrom} />
+            <StatusBadge status={property.status} availableFrom={property.availableFrom} compact />
             {property.furnished && (
               <Badge variant="furnished">Furnished</Badge>
             )}
@@ -153,22 +164,21 @@ export function PropertyCard({
       {/* Content Details Block */}
       <div
         style={{
-          padding: 'var(--space-5)',
+          padding: 'clamp(1rem, 3vw, var(--space-5))',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          flex: 1,
+          flex: variant === 'lead' ? '0 0 auto' : 1,
           gap: 'var(--space-3)',
         }}
       >
         <div>
-          {/* Top Metadata Line */}
+          {/* Top Metadata Header */}
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'baseline',
-              gap: 'var(--space-2)',
+              flexDirection: 'column',
+              gap: '2px',
               marginBottom: 'var(--space-2)',
             }}
           >
@@ -176,19 +186,19 @@ export function PropertyCard({
               className="label"
               style={{
                 color: 'var(--copper-600)',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
+                lineHeight: 1.3,
               }}
             >
-              {property.area} · {property.city}
+              {property.area}
             </span>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.6875rem',
                 color: 'var(--text-muted)',
-                flexShrink: 0,
+                lineHeight: 1.3,
               }}
             >
               {formatRelativeListed(property.listedOn)}
@@ -200,10 +210,15 @@ export function PropertyCard({
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: variant === 'lead' ? 'var(--fs-h2)' : '1.25rem',
-              lineHeight: 1.25,
+              lineHeight: 1.3,
               color: isRented ? 'var(--charcoal-500)' : 'var(--text-heading)',
               margin: '0 0 var(--space-3) 0',
               fontWeight: 500,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              minHeight: '2.6em',
             }}
           >
             {property.title}
@@ -211,12 +226,125 @@ export function PropertyCard({
 
           {/* Spec Row (Bed/Bath/Area) */}
           <SpecRow property={property} isMuted={isRented} />
+
+          {/* Lead Variant Extra: Description Excerpt & Amenity Chips */}
+          {variant === 'lead' && (
+            <div
+              style={{
+                marginTop: 'var(--space-3)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-2)',
+              }}
+            >
+              {property.description?.[0] && (
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.875rem',
+                    lineHeight: 1.5,
+                    color: 'var(--text-muted)',
+                    margin: 0,
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {property.description[0]}
+                </p>
+              )}
+
+              {property.amenities && property.amenities.length > 0 && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '6px',
+                    marginTop: '2px',
+                  }}
+                >
+                  {property.amenities.slice(0, 4).map((amenity) => (
+                    <span
+                      key={amenity}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '2px 8px',
+                        backgroundColor: 'var(--ivory-200)',
+                        border: '1px solid var(--border)',
+                        borderRadius: 'var(--radius-default)',
+                        fontSize: '0.6875rem',
+                        fontFamily: 'var(--font-mono)',
+                        color: 'var(--text-body)',
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      {amenity}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Description Excerpt for Compact Cards (ensures uniform balanced content) */}
+          {variant === 'compact' && property.description?.[0] && (
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.8125rem',
+                lineHeight: 1.45,
+                color: 'var(--text-muted)',
+                margin: 'var(--space-2) 0 0 0',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {property.description[0]}
+            </p>
+          )}
+
+          {/* Compact Variant Amenity Chips (prevents empty white space) */}
+          {variant === 'compact' && property.amenities && property.amenities.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '5px',
+                marginTop: 'var(--space-2)',
+              }}
+            >
+              {property.amenities.slice(0, 3).map((amenity) => (
+                <span
+                  key={amenity}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '2px 7px',
+                    backgroundColor: 'var(--ivory-200)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 'var(--radius-default)',
+                    fontSize: '0.6875rem',
+                    fontFamily: 'var(--font-mono)',
+                    color: 'var(--text-body)',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  {amenity}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Bottom Price and Reference Row */}
         <div
           className="hairline-top"
           style={{
+            marginTop: variant === 'lead' ? 'auto' : 'var(--space-4)',
             paddingTop: 'var(--space-3)',
             display: 'flex',
             alignItems: 'baseline',
@@ -256,7 +384,7 @@ export function PropertyCard({
               fontSize: '0.72rem',
             }}
           >
-            INDEX #{padRef(property.refNo)}
+            REF {padRef(property.refNo)}
           </span>
         </div>
       </div>

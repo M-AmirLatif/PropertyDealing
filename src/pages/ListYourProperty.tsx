@@ -11,7 +11,7 @@ import {
   DemoConfirmation,
   type FormErrorItem,
 } from '../components/forms';
-import { LAHORE_AREAS } from '../data/areas';
+import { KASUR_AREAS } from '../data/areas';
 import { SITE } from '../config/site';
 import {
   validateRequired,
@@ -34,7 +34,7 @@ interface OwnerFormData {
 const INITIAL_FORM: OwnerFormData = {
   ownerName: '',
   phone: '',
-  area: 'dha-phase-5',
+  area: 'Ideal Garden Housing Scheme',
   streetAddress: '',
   propertyType: 'house',
   bedrooms: '3',
@@ -158,7 +158,7 @@ export default function ListYourProperty() {
     setIsSubmitted(false);
   };
 
-  const areaOptions = LAHORE_AREAS.map((a) => ({
+  const areaOptions = KASUR_AREAS.map((a) => ({
     value: a.name,
     label: a.name,
   }));
@@ -180,7 +180,7 @@ export default function ListYourProperty() {
     { value: '5+', label: '5 or more Bedrooms' },
   ];
 
-  const locationSummary = `${formData.streetAddress}, ${formData.area}, Lahore`;
+  const locationSummary = `${formData.streetAddress}, ${formData.area}, Kasur`;
 
   const whatsappMessage = buildOwnerListingMessage({
     name: formData.ownerName,
@@ -193,7 +193,13 @@ export default function ListYourProperty() {
   });
 
   return (
-    <Section variant="default">
+    <Section
+      variant="default"
+      style={{
+        paddingTop: 'clamp(2rem, 3.5vw, 2.75rem)',
+        paddingBottom: 'clamp(2.5rem, 5vw, 4rem)',
+      }}
+    >
       <Container>
         {/* Editorial Page Head */}
         <div style={{ maxWidth: '780px', marginBottom: 'clamp(2rem, 5vw, 3.5rem)' }}>
@@ -205,7 +211,7 @@ export default function ListYourProperty() {
               marginBottom: 'var(--space-2)',
             }}
           >
-            LANDLORD &amp; OWNER REGISTER
+            FOR PROPERTY OWNERS
           </span>
           <h1
             style={{
@@ -227,7 +233,7 @@ export default function ListYourProperty() {
               margin: 0,
             }}
           >
-            In the live service, the dealer would review your property specifications, coordinate an initial walkthrough, document high-resolution architectural photography, and present your listing to qualified prospective tenants.
+            In the live service, the dealer would review your property specifications, coordinate an initial walkthrough, document clear photos, and present your listing to qualified prospective tenants.
           </p>
         </div>
 
@@ -326,7 +332,7 @@ export default function ListYourProperty() {
                   />
 
                   {/* Location (Area Select + Street Address) */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="owner-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                     <SelectField
                       id="owner-area"
                       name="area"
@@ -350,7 +356,7 @@ export default function ListYourProperty() {
                   </div>
 
                   {/* Typology & Bedrooms */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px' }}>
+                  <div className="owner-form-row" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px' }}>
                     <SelectField
                       id="owner-type"
                       name="propertyType"
@@ -503,7 +509,7 @@ export default function ListYourProperty() {
                     1.
                   </span>
                   <p style={{ fontSize: '0.8125rem', color: 'var(--text-body)', margin: 0, lineHeight: 1.5 }}>
-                    <strong>Consultation:</strong> The dealer contacts you to review prevailing sector rents and confirm lease terms.
+                    <strong>Consultation:</strong> The dealer contacts you to review prevailing locality rents and confirm lease terms.
                   </p>
                 </div>
 
@@ -512,7 +518,7 @@ export default function ListYourProperty() {
                     2.
                   </span>
                   <p style={{ fontSize: '0.8125rem', color: 'var(--text-body)', margin: 0, lineHeight: 1.5 }}>
-                    <strong>Inventory register:</strong> Key fixtures, covered areas, and utility supplies are catalogued.
+                    <strong>Property details:</strong> Key fixtures, covered areas, and utility supplies are catalogued.
                   </p>
                 </div>
 
@@ -534,6 +540,12 @@ export default function ListYourProperty() {
         @media (max-width: 900px) {
           .owner-listing-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .owner-form-row {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
         }
       `}</style>

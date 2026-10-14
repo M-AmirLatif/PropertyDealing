@@ -2,7 +2,7 @@ import { useState, useEffect, type ChangeEvent } from 'react';
 import { Search, X, Info } from 'lucide-react';
 import type { Property, PropertyType } from '../../types';
 import type { Filters } from '../../lib/filters';
-import { LAHORE_AREAS, getAreaPropertyCount } from '../../data/areas';
+import { KASUR_AREAS, getAreaPropertyCount } from '../../data/areas';
 import { Chip } from '../ui/Chip';
 import { SegmentedControl } from './SegmentedControl';
 
@@ -54,24 +54,24 @@ export function FilterFields({
     const val = e.target.value;
     if (val === 'any') {
       onFilterChange({ minRent: null, maxRent: null });
-    } else if (val === 'under-50k') {
-      onFilterChange({ minRent: null, maxRent: 50000 });
+    } else if (val === 'under-25k') {
+      onFilterChange({ minRent: null, maxRent: 25000 });
+    } else if (val === '25k-50k') {
+      onFilterChange({ minRent: 25000, maxRent: 50000 });
     } else if (val === '50k-100k') {
       onFilterChange({ minRent: 50000, maxRent: 100000 });
-    } else if (val === '100k-200k') {
-      onFilterChange({ minRent: 100000, maxRent: 200000 });
-    } else if (val === '200k-plus') {
-      onFilterChange({ minRent: 200000, maxRent: null });
+    } else if (val === '100k-plus') {
+      onFilterChange({ minRent: 100000, maxRent: null });
     }
   };
 
   // Determine current quick budget preset value
   const currentBudgetPreset = (() => {
     const { minRent, maxRent } = filters;
-    if (minRent === null && maxRent === 50000) return 'under-50k';
+    if (minRent === null && maxRent === 25000) return 'under-25k';
+    if (minRent === 25000 && maxRent === 50000) return '25k-50k';
     if (minRent === 50000 && maxRent === 100000) return '50k-100k';
-    if (minRent === 100000 && maxRent === 200000) return '100k-200k';
-    if (minRent === 200000 && maxRent === null) return '200k-plus';
+    if (minRent === 100000 && maxRent === null) return '100k-plus';
     if (minRent === null && maxRent === null) return 'any';
     return 'custom';
   })();
@@ -92,7 +92,7 @@ export function FilterFields({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
       {/* 1. Keyword Search Field */}
       <div>
         <label
@@ -100,7 +100,7 @@ export function FilterFields({
           className="label"
           style={{
             display: 'block',
-            marginBottom: 'var(--space-2)',
+            marginBottom: '4px',
             color: 'var(--text-heading)',
           }}
         >
@@ -108,11 +108,11 @@ export function FilterFields({
         </label>
         <div style={{ position: 'relative', width: '100%' }}>
           <Search
-            size={16}
+            size={15}
             aria-hidden="true"
             style={{
               position: 'absolute',
-              left: '12px',
+              left: '10px',
               top: '50%',
               transform: 'translateY(-50%)',
               color: 'var(--text-muted)',
@@ -124,17 +124,17 @@ export function FilterFields({
             type="text"
             value={localQ}
             onChange={(e) => setLocalQ(e.target.value)}
-            placeholder="e.g. DHA, garden, modern..."
+            placeholder="e.g. Model Garden, 5 marla"
             style={{
               width: '100%',
-              height: '42px',
-              paddingLeft: '36px',
-              paddingRight: localQ ? '36px' : '12px',
+              height: '38px',
+              paddingLeft: '32px',
+              paddingRight: localQ ? '32px' : '10px',
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--border)',
               borderRadius: 'var(--radius-default)',
               fontFamily: 'var(--font-body)',
-              fontSize: '0.875rem',
+              fontSize: '0.84rem',
               color: 'var(--text-heading)',
             }}
           />
@@ -148,7 +148,7 @@ export function FilterFields({
               aria-label="Clear keyword search"
               style={{
                 position: 'absolute',
-                right: '8px',
+                right: '6px',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 background: 'transparent',
@@ -167,18 +167,18 @@ export function FilterFields({
         </div>
       </div>
 
-      {/* 2. Locality / Area Select */}
+      {/* 2. Area Select */}
       <div>
         <label
           htmlFor={`${idPrefix}-area-select`}
           className="label"
           style={{
             display: 'block',
-            marginBottom: 'var(--space-2)',
+            marginBottom: '4px',
             color: 'var(--text-heading)',
           }}
         >
-          Locality / Sector
+          Area
         </label>
         <select
           id={`${idPrefix}-area-select`}
@@ -186,19 +186,19 @@ export function FilterFields({
           onChange={(e) => onFilterChange({ area: e.target.value })}
           style={{
             width: '100%',
-            height: '42px',
+            height: '38px',
             backgroundColor: 'var(--surface)',
             border: '1px solid var(--border)',
             borderRadius: 'var(--radius-default)',
-            padding: '0 12px',
+            padding: '0 10px',
             fontFamily: 'var(--font-body)',
-            fontSize: '0.875rem',
+            fontSize: '0.84rem',
             color: 'var(--text-heading)',
             cursor: 'pointer',
           }}
         >
-          <option value="">Any area in Lahore ({properties.length})</option>
-          {LAHORE_AREAS.map((a) => {
+          <option value="">Any area in Kasur ({properties.length})</option>
+          {KASUR_AREAS.map((a) => {
             const count = getAreaPropertyCount(a.slug, properties);
             return (
               <option key={a.slug} value={a.slug}>
@@ -209,19 +209,19 @@ export function FilterFields({
         </select>
       </div>
 
-      {/* 3. Property Typology Chips (Multi-select) */}
+      {/* 3. Property Type Chips (Multi-select) */}
       <div>
         <span
           className="label"
           style={{
             display: 'block',
-            marginBottom: 'var(--space-2)',
+            marginBottom: '4px',
             color: 'var(--text-heading)',
           }}
         >
-          Property Typology
+          Property type
         </span>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
           {TYPE_CONFIG.map(({ type, label }) => {
             const isSelected = filters.types.includes(type);
             const count = properties.filter((p) => p.type === type).length;
@@ -265,23 +265,23 @@ export function FilterFields({
           onChange={handleQuickBudgetChange}
           style={{
             width: '100%',
-            height: '38px',
+            height: '34px',
             backgroundColor: 'var(--surface)',
             border: '1px solid var(--border)',
             borderRadius: 'var(--radius-default)',
-            padding: '0 10px',
+            padding: '0 8px',
             fontFamily: 'var(--font-body)',
-            fontSize: '0.8125rem',
+            fontSize: '0.8rem',
             color: 'var(--text-heading)',
-            marginBottom: 'var(--space-2)',
+            marginBottom: '6px',
             cursor: 'pointer',
           }}
         >
           <option value="any">Any monthly budget</option>
-          <option value="under-50k">Up to Rs. 50,000</option>
-          <option value="50k-100k">Rs. 50,000 – 100,000</option>
-          <option value="100k-200k">Rs. 100,000 – 200,000</option>
-          <option value="200k-plus">Rs. 200,000 and above</option>
+          <option value="under-25k">Up to Rs. 25,000</option>
+          <option value="25k-50k">Rs. 25,000–50,000</option>
+          <option value="50k-100k">Rs. 50,000–100,000</option>
+          <option value="100k-plus">Rs. 100,000+</option>
           {currentBudgetPreset === 'custom' && (
             <option value="custom">Custom range</option>
           )}
@@ -332,14 +332,14 @@ export function FilterFields({
                 onChange={(e) => handleRentInputChange('minRent', e.target.value)}
                 style={{
                   width: '100%',
-                  height: '38px',
-                  paddingLeft: '32px',
-                  paddingRight: '8px',
+                  height: '34px',
+                  paddingLeft: '30px',
+                  paddingRight: '6px',
                   backgroundColor: 'var(--surface)',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius-default)',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.8125rem',
+                  fontSize: '0.8rem',
                   color: 'var(--text-heading)',
                 }}
               />
@@ -383,14 +383,14 @@ export function FilterFields({
                 onChange={(e) => handleRentInputChange('maxRent', e.target.value)}
                 style={{
                   width: '100%',
-                  height: '38px',
-                  paddingLeft: '32px',
-                  paddingRight: '8px',
+                  height: '34px',
+                  paddingLeft: '30px',
+                  paddingRight: '6px',
                   backgroundColor: 'var(--surface)',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius-default)',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.8125rem',
+                  fontSize: '0.8rem',
                   color: 'var(--text-heading)',
                 }}
               />
@@ -459,8 +459,8 @@ export function FilterFields({
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--space-2)',
-          paddingTop: 'var(--space-2)',
+          gap: '6px',
+          paddingTop: '8px',
           borderTop: '1px solid var(--border)',
         }}
       >
@@ -468,12 +468,12 @@ export function FilterFields({
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            fontSize: '0.875rem',
+            gap: '8px',
+            fontSize: '0.8125rem',
             color: 'var(--text-heading)',
             cursor: 'pointer',
             userSelect: 'none',
-            minHeight: '36px',
+            minHeight: '28px',
           }}
         >
           <input
@@ -481,8 +481,8 @@ export function FilterFields({
             checked={filters.furnished}
             onChange={(e) => onFilterChange({ furnished: e.target.checked })}
             style={{
-              width: '18px',
-              height: '18px',
+              width: '16px',
+              height: '16px',
               accentColor: 'var(--copper-600)',
               cursor: 'pointer',
             }}
@@ -494,12 +494,12 @@ export function FilterFields({
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            fontSize: '0.875rem',
+            gap: '8px',
+            fontSize: '0.8125rem',
             color: 'var(--text-heading)',
             cursor: 'pointer',
             userSelect: 'none',
-            minHeight: '36px',
+            minHeight: '28px',
           }}
         >
           <input
@@ -507,8 +507,8 @@ export function FilterFields({
             checked={filters.available}
             onChange={(e) => onFilterChange({ available: e.target.checked })}
             style={{
-              width: '18px',
-              height: '18px',
+              width: '16px',
+              height: '16px',
               accentColor: 'var(--copper-600)',
               cursor: 'pointer',
             }}

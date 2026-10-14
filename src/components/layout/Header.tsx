@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Bookmark, Menu, MessageSquare } from 'lucide-react';
 import { Logo } from '../ui/Logo';
@@ -8,6 +8,7 @@ import { IconButton } from '../ui/IconButton';
 import { MobileMenu } from './MobileMenu';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useWhatsApp } from '../../context/WhatsAppContext';
+import { handleAnchorClick } from '../../lib/scroll';
 
 const NAV_ITEMS = [
   { label: 'Properties', path: '/properties' },
@@ -20,17 +21,32 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { savedIds } = useFavorites();
   const { openWhatsApp } = useWhatsApp();
+
+  const [isLocationsInView, setIsLocationsInView] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      if (location.pathname === '/') {
+        const el = document.getElementById('locations');
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          setIsLocationsInView(rect.top <= 250 && rect.bottom >= 150);
+        } else {
+          setIsLocationsInView(false);
+        }
+      } else {
+        setIsLocationsInView(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
@@ -74,13 +90,14 @@ export function Header() {
             {NAV_ITEMS.map((item) => {
               const isActive =
                 item.path === '/#locations'
-                  ? location.hash === '#locations'
+                  ? location.pathname === '/' && isLocationsInView
                   : location.pathname.startsWith(item.path);
 
               return (
                 <Link
                   key={item.path}
                   to={item.path}
+                  onClick={(e) => handleAnchorClick(e, item.path, location.pathname, navigate)}
                   style={{
                     position: 'relative',
                     fontFamily: 'var(--font-mono)',

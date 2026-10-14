@@ -76,6 +76,21 @@ export function formatDate(isoDateString: string): string {
 }
 
 /**
+ * Formats short calendar date (day and month only, e.g. "15 Nov") for compact cards
+ */
+export function formatShortDate(isoDateString: string): string {
+  try {
+    const d = new Date(isoDateString);
+    return new Intl.DateTimeFormat('en-GB', {
+      day: 'numeric',
+      month: 'short',
+    }).format(d);
+  } catch {
+    return isoDateString;
+  }
+}
+
+/**
  * Pads numeric reference identifier to 3 digits.
  * e.g. padRef(7) => "007"
  */

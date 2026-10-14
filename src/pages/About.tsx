@@ -12,7 +12,7 @@ export default function About() {
   const { openWhatsApp } = useWhatsApp();
 
   useEffect(() => {
-    document.title = `About Advisory — ${SITE.dealerName}`;
+    document.title = `About — ${SITE.dealerName}`;
   }, []);
 
   const { header, dealerIntro, whatWeHelpWith, cta } = ABOUT_CONTENT;
@@ -20,7 +20,13 @@ export default function About() {
   return (
     <div className="about-page">
       {/* 1. Header Section */}
-      <Section variant="default">
+      <Section
+        variant="default"
+        style={{
+          paddingTop: 'clamp(2.5rem, 4.5vw, 3.75rem)',
+          paddingBottom: 'clamp(2.5rem, 5vw, 4rem)',
+        }}
+      >
         <Container>
           <div style={{ maxWidth: '780px', marginBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
             <span
@@ -28,7 +34,7 @@ export default function About() {
               style={{
                 color: 'var(--copper-600)',
                 display: 'block',
-                marginBottom: 'var(--space-2)',
+                marginBottom: 'var(--space-3)',
               }}
             >
               {header.label}
@@ -225,6 +231,7 @@ export default function About() {
 
           {/* 5. Working with the Dealer WhatsApp CTA Strip */}
           <div
+            className="about-cta-strip"
             style={{
               padding: 'clamp(2rem, 5vw, 3.5rem)',
               backgroundColor: 'var(--ivory-200)',
@@ -239,7 +246,7 @@ export default function About() {
           >
             <div style={{ maxWidth: '58ch' }}>
               <span className="label" style={{ color: 'var(--copper-600)', display: 'block', marginBottom: '4px' }}>
-                DIRECT ENGAGEMENT
+                GET IN TOUCH
               </span>
               <h2
                 style={{
@@ -256,12 +263,12 @@ export default function About() {
               </p>
             </div>
 
-            <div>
+            <div className="about-cta-btn-wrap">
               <Button
                 type="button"
                 variant="whatsapp"
                 size="lg"
-                onClick={() => openWhatsApp('Hello Irfan, I would like to consult regarding rental advisory services in Lahore.')}
+                onClick={() => openWhatsApp('Hello Irfan, I would like to inquire about rental properties in Kasur.')}
               >
                 <MessageSquare size={16} />
                 {cta.buttonText}
@@ -270,6 +277,24 @@ export default function About() {
           </div>
         </Container>
       </Section>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .about-cta-strip {
+            flex-direction: column !important;
+            text-align: center !important;
+            align-items: center !important;
+          }
+          .about-cta-strip p {
+            margin-inline: auto !important;
+          }
+          .about-cta-btn-wrap {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
